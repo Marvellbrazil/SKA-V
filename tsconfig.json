@@ -12,7 +12,6 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "baseUrl": "./resources/ts",
         "ignoreDeprecations": "5.0",
         "paths": {
             "@/*": ["./*"]

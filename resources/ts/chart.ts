@@ -57,7 +57,7 @@ export class JurusanChartManager {
         pemesinan: 0,
         tik: 0,
     };
-    private sectionTimers: { [key: string]: NodeJS.Timeout } = {};
+    private sectionTimers: { [key: string]: ReturnType<typeof setInterval> } = {};
     private sectionViewTime: { [key: string]: number } = {};
     private lastVisibleTime: { [key: string]: number } = {};
     private currentActiveSection: string | null = null;
