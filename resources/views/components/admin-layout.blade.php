@@ -61,7 +61,7 @@
             <div class="flex flex-wrap gap-2 py-3">
                 <a href="{{ route('admin.dashboard') }}"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    <i class="fa-solid fa-chart-column mr-2"></i>Dashboard
                 </a>
 
                 <!-- Menu untuk semua role -->
@@ -149,9 +149,9 @@
     <!-- Footer -->
     <footer class="bg-white border-t mt-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="text-center text-gray-500 text-sm">
-                &copy; {{ date('Y') }} Admin Panel - Logged in as
-                <span class="font-semibold capitalize">{{ Auth::user()->role }}</span>
+            <div class="text-center text-gray-500 text-sm" x-data="{ time: new Date().toLocaleTimeString() }"
+                x-init="setInterval(() => time = new Date().toLocaleTimeString(), 1000)">
+                &copy; 2026 SMK PGRI 3 Malang Admin Panel - <span class="font-bold" x-text="time"></span>
             </div>
         </div>
     </footer>

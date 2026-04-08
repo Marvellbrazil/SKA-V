@@ -1,14 +1,14 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
 <x-admin-layout>
     <div class="py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Welcome Message dengan Role -->
             <div class="mb-8">
                 <h1 class="text-4xl font-bold text-gray-900">
-                    Selamat Datang, {{ Auth::user()->username }}!
+                    {{ greetings() }}, {{ Auth::user()->username }}!
                 </h1>
-                <p class="text-gray-600 mt-8">
-                    Anda login sebagai <span class="font-semibold capitalize">{{ Auth::user()->role }}</span>
-                </p>
             </div>
 
             <!-- Visitor Statistics Section -->
@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <!-- Visitor Chart -->
+                <!-- Visitor Charts -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Statistik Pengunjung 7 Hari Terakhir</h3>
                     <div class="h-[350px] w-full">

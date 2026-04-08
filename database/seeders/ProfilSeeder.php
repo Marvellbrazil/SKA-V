@@ -26,28 +26,27 @@ class ProfilSeeder extends Seeder
             'youtubeSrc' => 'https://www.youtube.com/embed/FAwdUR9SFRU'
         ]);
 
-        // Create 4 misi cards
         $misis = [
             [
-                'misiImage' => 'profil/',
+                'misiImage' => '',
                 'misiTitle' => 'Unggul & Beriman',
                 'misiDesc' => 'Menjadi SMK yang unggul dalam prestasi dengan dilandasi Iman & Taqwa serta menghasilkan tamatan yang mampu bersaing di tingkat Nasional maupun Internasional.',
                 'misiColor' => 'BLUE'
             ],
             [
-                'misiImage' => 'profil/',
+                'misiImage' => '',
                 'misiTitle' => 'Akreditasi A',
                 'misiDesc' => 'Mempertahankan dan meningkatkan akreditasi A yang telah ditetapkan oleh BAN-PDM dengan sk 1857/BAN-SM/SK/2022.',
                 'misiColor' => 'GREEN'
             ],
             [
-                'misiImage' => 'profil',
+                'misiImage' => '',
                 'misiTitle' => 'Success By Discipline',
                 'misiDesc' => 'Dengan motto tersebut SMK PGRI 3 MALANG mampu menghasilkan lulusan yang sukses dan berkarakter disiplin.',
                 'misiColor' => 'ORANGE'
             ],
             [
-                'misiImage' => 'profil/',
+                'misiImage' => '',
                 'misiTitle' => 'Lulus Siap Kerja',
                 'misiDesc' => 'Menghasilkan lulusan yang kompeten dan siap bekerja di berbagai bidang industri dengan skill yang relevan.',
                 'misiColor' => 'RED'
@@ -59,8 +58,5 @@ class ProfilSeeder extends Seeder
                 'order' => $index
             ]));
         }
-
-        $this->command->info('Seeder Profil berhasil ditambahkan!');
-        $this->command->info('Data profil SMK PGRI 3 Malang telah diinisialisasi.');
     }
 }

@@ -4,7 +4,8 @@
             <!-- School Info -->
             <div class="w-full lg:w-1/4">
                 <a href="/" class="inline-block">
-                    <img class="h-12 md:h-16 mb-3 md:mb-4" src="{{ $assetBase . '/assets/skariga logo 1.png' }}" loading="lazy" alt="School Logo">
+                    <img class="h-12 md:h-16 mb-3 md:mb-4" src="{{ $assetBase . '/assets/skariga logo 1.png' }}"
+                        loading="lazy" alt="School Logo">
                 </a>
                 <p class="text-[#B9B9B9] text-sm md:text-lg font-bold mb-2">Success By Discipline</p>
                 <div class="h-px w-full bg-gray-700 mb-3 md:mb-4"></div>
@@ -16,7 +17,8 @@
 
                 <div class="flex items-start py-2" title="WhatsApp">
                     <i class="fab fa-whatsapp text-gray-500 mt-0.5 mr-2 text-xs md:text-base"></i>
-                    <a href="https://wa.me/6282133000370" class="text-[#828282] text-xs md:text-sm underline break-words">+62 821-3300-0370</a>
+                    <a href="https://wa.me/6282133000370"
+                        class="text-[#828282] text-xs md:text-sm underline break-words">+62 821-3300-0370</a>
                 </div>
 
                 <div class="flex items-start py-2" title="Email">
@@ -32,11 +34,16 @@
             <div class="w-full lg:w-1/4">
                 <h3 class="text-[#B9B9B9] text-base md:text-xl font-bold mb-3 md:mb-4">Tentang Sekolah</h3>
                 <ul class="space-y-1 md:space-y-2">
-                    <li><a href="/" class="text-[#828282] hover:text-white transition text-xs md:text-base">Beranda</a></li>
-                    <li><a href="/berita" class="text-[#828282] hover:text-white transition text-xs md:text-base">Berita</a></li>
-                    <li><a href="/profil" class="text-[#828282] hover:text-white transition text-xs md:text-base">Profil Sekolah</a></li>
-                    <li><a href="/jurusan" class="text-[#828282] hover:text-white transition text-xs md:text-base">Jurusan</a></li>
-                    <li><a href="/prestasi" class="text-[#828282] hover:text-white transition text-xs md:text-base">Prestasi</a></li>
+                    <li><a href="/" class="text-[#828282] hover:text-white transition text-xs md:text-base">Beranda</a>
+                    </li>
+                    <li><a href="/berita"
+                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Berita</a></li>
+                    <li><a href="/profil" class="text-[#828282] hover:text-white transition text-xs md:text-base">Profil
+                            Sekolah</a></li>
+                    <li><a href="/jurusan"
+                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Jurusan</a></li>
+                    <li><a href="/prestasi"
+                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Prestasi</a></li>
                 </ul>
             </div>
 
@@ -45,9 +52,12 @@
                 <h3 class="text-[#B9B9B9] text-base md:text-xl font-bold mb-3 md:mb-4">Informasi & Layanan</h3>
                 <ul class="space-y-1 md:space-y-2">
                     <li><a href="/ekstrakurikuler"
-                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Ekstrakurikuler</a></li>
-                    <li><a href="/alumni" class="text-[#828282] hover:text-white transition text-xs md:text-base">Alumni</a></li>
-                    <li><a href="/Pendaftaran" class="text-[#828282] hover:text-white transition text-xs md:text-base">Pendaftaran</a></li>
+                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Ekstrakurikuler</a>
+                    </li>
+                    <li><a href="/alumni"
+                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Alumni</a></li>
+                    <li><a href="/Pendaftaran"
+                            class="text-[#828282] hover:text-white transition text-xs md:text-base">Pendaftaran</a></li>
                 </ul>
             </div>
 
@@ -94,15 +104,9 @@
             </div>
         </div>
 
-        <!-- Logo Penting -->
-        <div class="flex flex-wrap justify-center items-center gap-3 md:gap-6 mt-6 md:mt-4">
-            <img class="h-8 md:h-16 object-contain inline-block bg-white rounded-xl p-1"
-                src="{{ $assetBase . '/assets/upscale-logo-penting.png' }}" alt="Yamaha Logo">
-        </div>
-
         <!-- Copyright -->
         <div class="border-t border-gray-700 mt-6 md:mt-8 pt-4 md:pt-6 text-center text-gray-500 text-xs md:text-sm">
-            <p>&copy; 2025 SMK PGRI 3 Malang. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} SMK PGRI 3 Malang. All rights reserved.</p>
         </div>
     </div>
 </footer>

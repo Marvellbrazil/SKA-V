@@ -30,7 +30,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Tabel terpisah untuk misi (karena butuh foreach/array)
         Schema::create('misis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id')->constrained()->onDelete('cascade');

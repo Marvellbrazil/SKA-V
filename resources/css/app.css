@@ -4,6 +4,8 @@
 
 @import "./swiper.css";
 
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
 body {
     font-family: 'Poppins', sans-serif !important;
     scroll-behavior: smooth;

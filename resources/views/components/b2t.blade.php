@@ -4,7 +4,7 @@
     .back-to-top {
         position: fixed;
         bottom: 30px;
-        right: 30px;
+        left: 30px;
         background: #E17626;
         color: white;
         width: 50px;

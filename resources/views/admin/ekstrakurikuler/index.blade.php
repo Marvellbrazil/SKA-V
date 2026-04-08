@@ -4,7 +4,7 @@
 
         @if(auth()->user()->canCreate())
         <a href="{{ route('admin.ekskul.create') }}"
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">+ Tambah Ekstrakurikuler</a>
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"><i class="fas fa-plus mr-2"></i> Tambah Ekstrakurikuler</a>
         @endif
     </div>
 

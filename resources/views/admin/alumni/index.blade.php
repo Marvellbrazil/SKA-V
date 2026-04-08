@@ -6,7 +6,7 @@
         @if(auth()->user()->canCreate())
         <a href="{{ route('admin.alumni.create') }}"
             class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center">
-            <i class="fas fa-user-plus mr-2"></i>Tambah Alumni
+            <i class="fas fa-plus mr-2"></i> Tambah Alumni
         </a>
         @endif
     </div>
@@ -94,7 +94,7 @@
         {{ $alumnis->links() }}
     </div>
     <!-- Quick Stats -->
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="mt-6 grid grid-cols-1 gap-4">
         <div class="bg-white p-4 rounded-lg shadow">
             <div class="flex items-center">
                 <div class="p-2 bg-blue-100 rounded-lg">
@@ -103,26 +103,6 @@
                 <div class="ml-4">
                     <p class="text-sm text-gray-500">Total Alumni</p>
                     <p class="text-xl font-bold">{{ $alumnis->total() }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-purple-100 rounded-lg">
-                    <i class="fas fa-shield-alt text-purple-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Permissions</p>
-                    <p class="text-sm font-semibold">
-                        @if(Auth::user()->isSuperadmin())
-                        Full Access
-                        @elseif(Auth::user()->isAdmin())
-                        Create, Edit & Delete
-                        @else
-                        Create & Edit Only
-                        @endif
-                    </p>
                 </div>
             </div>
         </div>
