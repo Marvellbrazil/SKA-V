@@ -1,6 +1,5 @@
 <x-layout title="SMK PGRI 3 Malang - Success by Discipline">
     <script>
-    // Optimasi: Data transfer lebih efisien
     window.beritas = @json($beritas->take(4));
     </script>
 

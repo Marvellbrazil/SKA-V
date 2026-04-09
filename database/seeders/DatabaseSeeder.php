@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PrestasiSeeder::class);
         $this->call(PendaftaranSeeder::class);
         $this->call(AlumniSeeder::class);
+        $this->call(BeritaSeeder::class);
 
         // adminans on production goes below:
-        
+
     }
 }

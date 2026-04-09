@@ -1,5 +1,5 @@
 <x-layout title="Berita - SMK PGRI 3 Malang">
-    <div class="bg-gray-50">
+    <div class="bg-[#F8F8F8]">
         <section class="bg-gradient-to-r from-custombbg-customBlue text-white py-12">
             <div class="container mx-auto px-4 py-4">
                 <div class="max-w-1xl">
@@ -97,7 +97,7 @@
                 <div class="news-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full"
                     data-type="{{ strtolower($berita->type) }}">
                     <div class="relative">
-                        <img src="{{ $assetBase . '/storage/' . $berita->gambar }}" alt="{{ $berita->title }}"
+                        <img src="{{ is_null($berita->gambar) ? $assetBase . '/storage/' . $berita->gambar : 'https://placehold.co/600x400' }}" alt="{{ $berita->title }}"
                             class="w-full h-48 object-cover">
                         <div class="absolute top-4 left-4">
                             <span class="bg-customOrange text-white px-3 py-1 rounded-full text-xs font-medium">

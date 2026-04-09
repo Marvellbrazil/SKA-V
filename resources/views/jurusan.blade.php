@@ -1,5 +1,4 @@
 <x-layout title="Jurusan - SMK PGRI 3 Malang">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
     /* Custom scrollbar untuk slider */
     .slider::-webkit-scrollbar {
@@ -206,7 +205,7 @@
     }
     </style>
 
-    <div class="bg-white text-gray-900 font-sans">
+    <div class="bg-[#F8F8F8] text-gray-900 font-sans">
         <div class="h-full h-max-content container mx-auto px-4 py-6">
             <!-- Hero Section -->
             <section class="relative h-[535px] mt-2 rounded-xl overflow-hidden">

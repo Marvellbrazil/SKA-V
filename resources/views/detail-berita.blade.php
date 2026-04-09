@@ -1,5 +1,5 @@
 <x-layout title="{{ $berita->title }} - SMK PGRI 3 Malang">
-    <div class="bg-gray-50">
+    <div class="bg-[#F8F8F8]">
         <!-- Main Content -->
         <main class="container mx-auto px-4 py-8">
             <div class="flex flex-col lg:flex-row gap-8">
