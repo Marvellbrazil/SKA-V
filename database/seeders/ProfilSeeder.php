@@ -20,7 +20,7 @@ class ProfilSeeder extends Seeder
             'profilDesc' => 'SMK PGRI 3 Malang dirintis sejak tahun 1986 atas prakarsa sebanyak 16 dosen dari Universitas Brawijaya, Kota Malang. Pada bulan September 1986, SMK PGRI Malang didirikan dengan nama STM PGRI Dau Malang. Pengelolaan dilakukan oleh Yayasan PGRI Kecamatan DAU Kabupaten Malang. Lokasi pembelajaran awalnya dilakukan di SD Negeri Tlogomas 2 Malang yang berlokasi di wilayah Kecamatan Dau, Kabupaten Malang.',
 
             'visiImage' => null,
-            'visiImageName' => 'Moch. Lukman Hakim, S.T, M.M. - Kepala SMK PGRI 3 Malang',
+            'visiImageName' => 'Moch. Lukman Hakim, S.T, M.M.',
             'visiDesc' => 'Menjadi SMK yang unggul dalam prestasi dengan dilandasi Iman & Taqwa serta menghasilkan tamatan yang mampu bersaing di tingkat Nasional maupun Internasional.',
 
             'youtubeSrc' => 'https://www.youtube.com/embed/FAwdUR9SFRU'

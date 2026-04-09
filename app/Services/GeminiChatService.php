@@ -18,7 +18,6 @@ class GeminiChatService
 
     public function ask(string $prompt): string
     {
-        // Gabungkan semua data JSON sekolah
         $context = '';
         foreach (File::files(storage_path('app/data')) as $file) {
             $context .= File::get($file->getPathname()) . "\n";
@@ -62,8 +61,7 @@ class GeminiChatService
             $context dan berita-berita terbaru dan TERPERCAYA yang ada di internet.
             ";
 
-        // Kirim permintaan ke Gemini 2.5 Flash
-        $response = Http::withHeaders([
+        $response = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json',
         ])->post($this->endpoint, [
             'contents' => [

@@ -17,15 +17,6 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
         $assetBase = config('app.url');
 
-        if (request()->getHost() === 'smkpgri3mlg.web.id' ||
-            request()->getHost() === 'www.smkpgri3mlg.web.id') {
-            $assetBase = 'https://' . request()->getHost();
-        } elseif (request()->getHost() === 'localhost') {
-            $assetBase = 'http://' . request()->getHost();
-        } elseif (request()->getHost() === '127.0.0.1') {
-            $assetBase = 'http://' . request()->getHost() . ':' . request()->getPort();
-        }
-
         $view->with('assetBase', $assetBase);
     });
 
