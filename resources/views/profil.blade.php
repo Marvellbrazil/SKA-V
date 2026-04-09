@@ -1,69 +1,69 @@
 <x-layout title="Profil - SMK PGRI 3 Malang" :headerTransparent="false">
     <style>
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
-        100% {
-            transform: translateX(-50%);
+        .animate-scroll {
+            display: flex;
+            animation: scroll 25s linear infinite;
         }
-    }
 
-    .animate-scroll {
-        display: flex;
-        animation: scroll 25s linear infinite;
-    }
+        /* Animasi tambahan untuk hover */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
 
-    /* Animasi tambahan untuk hover */
-    .hover-lift {
-        transition: all 0.3s ease;
-    }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
 
-    .hover-lift:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    }
+        .hover-scale {
+            transition: all 0.4s ease;
+        }
 
-    .hover-scale {
-        transition: all 0.4s ease;
-    }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
 
-    .hover-scale:hover {
-        transform: scale(1.05);
-    }
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+        }
 
-    .hover-glow:hover {
-        box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
-    }
+        .hover-rotate:hover {
+            transform: rotate(2deg);
+        }
 
-    .hover-rotate:hover {
-        transform: rotate(2deg);
-    }
+        .hover-brightness:hover {
+            filter: brightness(1.1);
+        }
 
-    .hover-brightness:hover {
-        filter: brightness(1.1);
-    }
+        .hover-border-orange:hover {
+            border: 2px solid #f97316;
+        }
 
-    .hover-border-orange:hover {
-        border: 2px solid #f97316;
-    }
+        .hover-text-white:hover {
+            color: white;
+        }
 
-    .hover-text-white:hover {
-        color: white;
-    }
+        .hover-bg-orange:hover {
+            background-color: #f97316;
+        }
 
-    .hover-bg-orange:hover {
-        background-color: #f97316;
-    }
+        .hover-shadow-lg {
+            transition: all 0.3s ease;
+        }
 
-    .hover-shadow-lg {
-        transition: all 0.3s ease;
-    }
-
-    .hover-shadow-lg:hover {
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+        .hover-shadow-lg:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
     </style>
 
     <div class="h-full h-max-content container mx-auto px-4 py-6">
@@ -71,8 +71,8 @@
         <section class="relative h-[535px] mt-2 rounded-xl overflow-hidden">
             <div class="absolute inset-0 w-full h-full hover-scale">
                 <div class="absolute inset-0 bg-gradient-to-t from-transparent via-black/5 to-black/70"></div>
-                <img src="{{ !is_null($profil->heroImage) ? $assetBase . '/storage/' . $profil->heroImage : 'https://placehold.co/600x400' }}" alt="Hero SKARIGA"
-                    class="w-full h-full object-cover">
+                <img src="{{ !is_null($profil->heroImage) ? $assetBase . '/storage/' . $profil->heroImage : 'https://placehold.co/600x400' }}"
+                    alt="Hero SKARIGA" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute bottom-8 left-3.5 md:left-10 z-10">
@@ -144,34 +144,40 @@
         <section class="w-full mx-auto pt-6 pb-10 mt-12">
             <div class="bg-orange-500 rounded-2xl shadow-lg overflow-visible relative hover-lift hover-glow">
                 <div class="grid md:grid-cols-2 items-start relative py-12">
+
                     <div class="relative flex justify-center items-start w-full">
-                        <!-- Gambar Kepala Sekolah - Desktop -->
-                        <img src="{{ !is_null($profil->visiImage) ? $assetBase . '/storage/' . $profil->visiImage : $assetBase . '/assets/bp.Luqman_kepsek-removebg-preview.png' }}"
-                            alt="Kepala Sekolah SMK PGRI 3 Malang"
-                            class="hidden md:block absolute top-0 left-[40%] transform -translate-x-1/2 -translate-y-[41.2%] w-full md:w-[100%] max-h-[450px] object-contain">
 
-                        <!-- Nama di sebelah kanan leher - Desktop -->
-                        <div class="hidden md:block absolute top-0 left-[450px] text-white">
-                            <h3 class="text-md font-bold leading-tight drop-shadow-md whitespace-nowrap {{ strlen($profil->visiImageName) > 30 ? 'text-sm lg:text-md' : 'text-md' }}">
-                                {{ $profil->visiImageName }}
-                            </h3>
-                        </div>
-
-                        <!-- Mobile Layout -->
-                        <div class="md:hidden flex flex-col items-center w-full bg-transparent rounded-2xl p-4">
-                            <img src="{{ $assetBase . '/storage/' . $profil->visiImage }}"
+                        <div
+                            class="hidden md:block absolute top-0 left-[40%] transform -translate-x-1/2 -translate-y-[41.2%] w-full max-h-[450px]">
+                            <img src="{{ !is_null($profil->visiImage) ? $assetBase . '/storage/' . $profil->visiImage : $assetBase . '/assets/bp.Luqman_kepsek-removebg-preview.png' }}"
                                 alt="Kepala Sekolah SMK PGRI 3 Malang"
-                                class="w-full max-w-[200px] object-contain mb-4">
+                                style="-webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, black 90%, transparent 100%);"
+                                class="w-full max-h-[450px] object-contain mx-auto">
 
-                            <div class="text-center text-white w-full px-2">
-                                <h3 class="text-lg font-bold leading-tight drop-shadow-lg mb-2">
-                                    {{ $profil->visiImageName }}
-                                </h3>
+                            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center text-white w-full px-4"
+                                style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
+                                <h3 class="text-2xl font-bold tracking-wide">{{ $profil->visiImageName }}</h3>
+                                <p class="text-base font-medium text-gray-100 mt-1">Kepala SMK PGRI 3 Malang</p>
                             </div>
                         </div>
+
+                        <div class="md:hidden flex flex-col items-center w-full bg-transparent rounded-2xl p-4">
+                            <div class="relative w-full max-w-96 flex justify-center">
+                                <img src="{{ !is_null($profil->visiImage) ? $assetBase . '/storage/' . $profil->visiImage : $assetBase . '/assets/bp.Luqman_kepsek-removebg-preview.png' }}"
+                                    alt="Kepala Sekolah SMK PGRI 3 Malang"
+                                    style="-webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, black 90%, transparent 100%);"
+                                    class="w-full object-contain mb-4">
+
+                                <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center text-white w-full px-2"
+                                    style="text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">
+                                    <h3 class="text-lg font-bold leading-tight">{{ $profil->visiImageName }}</h3>
+                                    <p class="text-xs font-medium text-gray-100 mt-1">Kepala SMK PGRI 3 Malang</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Bagian Visi -->
                     <div class="px-8 py-8 text-white z-10">
                         <h2 class="text-5xl font-bold mb-4">Visi</h2>
                         <p class="text-lg leading-relaxed">
@@ -187,10 +193,10 @@
             <h2 class="text-5xl font-bold text-center mb-12">Misi</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 @foreach ($profil->misis as $misi)
-                <x-profilcard bgColor="{{ $misi->misiColor }}" title="{!! $misi->misiTitle !!}"
-                    image="{{ !is_null($misi->misiImage) ? $assetBase . '/storage/' . $misi->misiImage : 'https://placehold.co/50x50' }}">
-                    {{ $misi->misiDesc }}
-                </x-profilcard>
+                    <x-profilcard bgColor="{{ $misi->misiColor }}" title="{!! $misi->misiTitle !!}"
+                        image="{{ !is_null($misi->misiImage) ? $assetBase . '/storage/' . $misi->misiImage : 'https://placehold.co/50x50' }}">
+                        {{ $misi->misiDesc }}
+                    </x-profilcard>
                 @endforeach
             </div>
 

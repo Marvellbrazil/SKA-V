@@ -15,7 +15,7 @@ class EkskulSeeder extends Seeder
         $ekskuls = [
             [
                 'title' => 'Futsal',
-                'desc' => 'Akademi Futsal Skariga (AFUSKA) merupakan DB bidang olahraga yang bisa diikuti oleh seluruh siswa Skariga. Terdiri dari tim putra dan putri.',
+                'desc' => 'Akademi Futsal SKARIGA (AFUSKA) merupakan DB bidang olahraga yang bisa diikuti oleh seluruh siswa SKARIGA. Terdiri dari tim putra dan putri.',
                 'image' => null
             ],
             [
@@ -50,7 +50,7 @@ class EkskulSeeder extends Seeder
             ],
             [
                 'title' => 'Basket',
-                'desc' => 'DB bola basket rutin mengikuti lomba antar SMA/SMK sederajat. Terbaru, tim basket Skariga ikut ambil bagian dalam IMONOKE CUP Kota Malang 2024.',
+                'desc' => 'DB bola basket rutin mengikuti lomba antar SMA/SMK sederajat. Terbaru, tim basket SKARIGA ikut ambil bagian dalam IMONOKE CUP Kota Malang 2024.',
                 'image' => null
             ],
             [

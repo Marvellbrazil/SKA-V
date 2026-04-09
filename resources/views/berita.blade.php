@@ -3,7 +3,7 @@
         <section class="bg-gradient-to-r from-custombbg-customBlue text-white py-12">
             <div class="container mx-auto px-4 py-4">
                 <div class="max-w-1xl">
-                    <h1 class="text-4xl font-bold mb-4 text-gray-700">Berita Terkini Skariga</h1>
+                    <h1 class="text-4xl font-bold mb-4 text-gray-700">Berita Terkini SKARIGA</h1>
                     <p class="text-lg text-gray-500">Ikuti perkembangan terbaru seputar kegiatan, prestasi, dan
                         informasi penting
                         dari SMK PGRI 3 Malang.</p>
