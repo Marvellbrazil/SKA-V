@@ -68,7 +68,7 @@
 
     <div class="h-full h-max-content container mx-auto px-4 py-6">
         <!-- Hero SKARIGA -->
-        <section class="relative h-[535px] mt-2 rounded-xl overflow-hidden">
+        <section class="relative h-[800px] mt-2 rounded-xl overflow-hidden">
             <div class="absolute inset-0 w-full h-full hover-scale">
                 <div class="absolute inset-0 bg-gradient-to-t from-transparent via-black/5 to-black/70"></div>
                 <img src="{{ !is_null($profil->heroImage) ? $assetBase . '/storage/' . $profil->heroImage : 'https://placehold.co/600x400' }}"
@@ -155,7 +155,7 @@
                                 class="w-full max-h-[450px] object-contain mx-auto">
 
                             <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center text-white w-full px-4"
-                                style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
+                                style="text-shadow: 2px 2px 8px rgba(0,0,0,0.4);">
                                 <h3 class="text-2xl font-bold tracking-wide">{{ $profil->visiImageName }}</h3>
                                 <p class="text-base font-medium text-gray-100 mt-1">Kepala SMK PGRI 3 Malang</p>
                             </div>
@@ -169,7 +169,7 @@
                                     class="w-full object-contain mb-4">
 
                                 <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center text-white w-full px-2"
-                                    style="text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">
+                                    style="text-shadow: 2px 2px 6px rgba(0,0,0,0.4);">
                                     <h3 class="text-lg font-bold leading-tight">{{ $profil->visiImageName }}</h3>
                                     <p class="text-xs font-medium text-gray-100 mt-1">Kepala SMK PGRI 3 Malang</p>
                                 </div>
@@ -230,7 +230,7 @@
 
         <!-- Profil Lengkap -->
         <section class="mx-auto py-16">
-            <h2 class="text-5xl font-bold text-center mb-8">Profil Lengkap SKARIGA</h2>
+            <h2 class="text-5xl font-bold text-center mb-12">Profil Lengkap SKARIGA</h2>
             <div
                 class="relative w-full h-full max-h-52 sm:max-h-80 md:max-h-96 lg:max-h-[800px] aspect-square mx-auto rounded-2xl overflow-hidden shadow-lg hover-lift">
                 <iframe

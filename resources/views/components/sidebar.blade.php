@@ -151,7 +151,7 @@
         <div class="flex-1 overflow-y-auto p-5 space-y-4">
 
             <!-- Menu -->
-            @foreach ([
+            {{-- @foreach ([
             ['icon' => $assetBase . '/assets/home (1).png', 'label' => 'Beranda', 'href' => '/'],
             ['icon' => $assetBase . '/assets/news.png', 'label' => 'Berita', 'href' => '/berita'],
             ['icon' => $assetBase . '/assets/profil.png', 'label' => 'Profil', 'href' => '/profil'],
@@ -168,7 +168,7 @@
                     {{ $item['label'] }}
                 </a>
             </div>
-            @endforeach
+            @endforeach --}}
 
             <!-- QNA -->
             <x-qna></x-qna>
