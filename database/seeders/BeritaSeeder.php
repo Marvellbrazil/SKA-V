@@ -19,7 +19,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'pembaruan-sistem-akademik-semester-genap',
                 'deskripsi' => 'Informasi mengenai pemeliharaan rutin sistem akademik.',
                 'content' => 'Sistem akan mengalami downtime pada hari Sabtu pukul 22:00 WIB untuk optimasi database.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 105,
                 'type' => 'PENGUMUMAN'
             ],
@@ -28,7 +28,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'seminar-nasional-teknologi-ai-2026',
                 'deskripsi' => 'Menghadirkan pakar industri dari berbagai perusahaan teknologi.',
                 'content' => 'Acara ini akan membahas implementasi generative AI di sektor manufaktur dan pendidikan.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 450,
                 'type' => 'ACARA'
             ],
@@ -37,7 +37,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'bakti-sosial-mahasiswa-desa-pelosok',
                 'deskripsi' => 'Kegiatan rutin tahunan Himpunan Mahasiswa.',
                 'content' => 'Fokus utama kegiatan adalah edukasi sanitasi dan pemberian bantuan alat tulis.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 210,
                 'type' => 'KEGIATAN'
             ],
@@ -46,7 +46,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'penerimaan-beasiswa-prestasi-gelombang-2',
                 'deskripsi' => 'Pendaftaran dibuka bagi mahasiswa dengan IPK di atas 3.75.',
                 'content' => 'Segera siapkan berkas administrasi dan sertifikat pendukung sebelum akhir bulan.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 890,
                 'type' => 'PENGUMUMAN'
             ],
@@ -55,7 +55,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'workshop-ui-ux-design-for-mobile',
                 'deskripsi' => 'Belajar fundamental desain aplikasi mobile menggunakan Figma.',
                 'content' => 'Materi mencakup wireframing, prototyping, hingga usability testing.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 320,
                 'type' => 'ACARA'
             ],
@@ -64,7 +64,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'lomba-inovasi-teknologi-tepat-guna',
                 'deskripsi' => 'Ajang kompetisi ide kreatif untuk solusi masyarakat.',
                 'content' => 'Peserta diharapkan membawa prototipe fisik untuk dipresentasikan di depan dewan juri.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 150,
                 'type' => 'KEGIATAN'
             ],
@@ -73,7 +73,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'perubahan-jadwal-ujian-tengah-semester',
                 'deskripsi' => 'Revisi jadwal untuk mata kuliah umum.',
                 'content' => 'Harap periksa kembali dashboard masing-masing karena ada pergeseran jam ujian.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 1200,
                 'type' => 'PENGUMUMAN'
             ],
@@ -82,7 +82,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'webinar-karir-persiapan-kerja-startup',
                 'deskripsi' => 'Tips interview dan penyusunan CV ATS-friendly.',
                 'content' => 'Menghadirkan HRD dari Tech Unicorn untuk membagikan rahasia dapur rekrutmen.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 560,
                 'type' => 'ACARA'
             ],
@@ -91,7 +91,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'pelatihan-penulisan-jurnal-ilmiah',
                 'deskripsi' => 'Meningkatkan sitasi dan kualitas publikasi dosen.',
                 'content' => 'Teknik penggunaan Mendeley dan pemilihan publisher terindeks Scopus.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 180,
                 'type' => 'KEGIATAN'
             ],
@@ -100,7 +100,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'pengumuman-libur-hari-raya',
                 'deskripsi' => 'Penyesuaian operasional kantor selama masa libur.',
                 'content' => 'Seluruh layanan administrasi akan tutup sementara dan buka kembali pada H+7.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 2000,
                 'type' => 'PENGUMUMAN'
             ],
@@ -109,7 +109,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'turnamen-e-sport-kampus-2026',
                 'deskripsi' => 'Kompetisi persahabatan Mobile Legends dan Valorant.',
                 'content' => 'Pendaftaran tim dibuka hingga jumat depan dengan total hadiah jutaan rupiah.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 740,
                 'type' => 'ACARA'
             ],
@@ -118,7 +118,7 @@ class BeritaSeeder extends Seeder
                 'slug' => 'workshop-cybersecurity-awareness',
                 'deskripsi' => 'Cara melindungi data pribadi di era digital.',
                 'content' => 'Demo langsung mengenai serangan phishing dan cara pencegahannya secara teknis.',
-                'gambar' => '',
+                'gambar' => null,
                 'views' => 410,
                 'type' => 'KEGIATAN'
             ],

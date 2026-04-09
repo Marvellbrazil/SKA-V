@@ -3,7 +3,7 @@
 <div
     class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
     <div class="h-72 relative">
-        <img src="{{ $assetBase . '/storage/' . $image }}" class="w-full h-full object-cover" alt="{{ $title }}">
+        <img src="{{ !is_null($image) ? $assetBase . '/storage/' . $image : 'https://placehold.co/600x400' }}" class="w-full h-full object-cover" alt="{{ $title }}">
         <span
             class="absolute top-4 left-4 bg-customOrange text-white px-3 py-1 rounded-full text-xs font-semibold">{{ $type }}</span>
         <div class="absolute bottom-4 left-4 text-white">

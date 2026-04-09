@@ -1,5 +1,5 @@
 declare global {
-    interface Window {
+    interface globalThis {
         Alpine: typeof Alpine;
         showNews: (index: number) => void;
         initializeNewsSlider: () => void;
@@ -41,31 +41,15 @@ const initializeNewsSlider = (): void => {
     // console.log("🔄 Initializing news slider...");
 
     try {
-        // Ambil data berita dari window object
-        const beritasData = window.beritas;
+        // Ambil data berita dari globalThis object
+        const beritasData = globalThis.beritas;
         // console.log("📊 Beritas data:", beritasData);
-
-        if (!beritasData || !Array.isArray(beritasData)) {
-            console.warn("⚠️ No valid beritas data found");
-            createDefaultSlide();
-            return;
-        }
 
         allBeritas = beritasData;
         // console.log(`📰 Found ${allBeritas.length} beritas`);
 
-        if (allBeritas.length === 0) {
-            console.warn("⚠️ No beritas data available");
-            createDefaultSlide();
-            return;
-        }
-
         // Setup Swiper container
         const swiperWrapper = document.getElementById("x-headnews");
-        if (!swiperWrapper) {
-            console.error("❌ Swiper wrapper (#x-headnews) not found");
-            return;
-        }
 
         // Clear existing content
         swiperWrapper.innerHTML = "";
@@ -88,7 +72,7 @@ const initializeNewsSlider = (): void => {
                 <a href="/berita/${berita.id}">
                     <img src="${imagePath}" alt="${berita.title}"
                         class="headnews-img w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover"
-                        onerror="this.src='/assets/default.svg'"/>
+                        onerror="this.src='https://placehold.co/600x400'"/>
                     <div class="absolute bottom-0 left-0 w-full h-1/2 gradient-overlay"></div>
                     <div class="absolute bottom-6 left-5 md:left-8 text-white max-w-4xl">
                         <h1 class="title text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
@@ -108,19 +92,18 @@ const initializeNewsSlider = (): void => {
 
         // console.log("✅ News slider initialized successfully");
     } catch (error) {
-        console.error("❌ Error initializing news slider:", error);
+        // console.error("❌ Error initializing news slider:", error);
         createDefaultSlide();
     }
 };
 
-// ✅ Create default slide jika tidak ada data
 const createDefaultSlide = (): void => {
     const swiperWrapper = document.getElementById("x-headnews");
     if (!swiperWrapper) return;
 
     swiperWrapper.innerHTML = `
         <div class="swiper-slide relative w-full h-full">
-            <img src="/assets/default.svg" alt="Default News"
+            <img src="https://placehold.co/600x400" alt="Default News"
                 class="headnews-img w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover" />
             <div class="absolute bottom-0 left-0 w-full h-1/2 gradient-overlay"></div>
             <div class="absolute bottom-6 left-5 md:left-8 text-white max-w-4xl">
@@ -141,7 +124,7 @@ const createDefaultSlide = (): void => {
 const initializeSwiperInstance = (): void => {
     const swiperEl = document.querySelector(".mySwiper");
     if (!swiperEl) {
-        console.error("❌ Swiper element (.mySwiper) not found");
+        // console.error("❌ Swiper element (.mySwiper) not found");
         return;
     }
 
@@ -182,22 +165,17 @@ const initializeSwiperInstance = (): void => {
             },
         });
     } catch (error) {
-        console.error("❌ Error initializing Swiper:", error);
+        // console.error("❌ Error initializing Swiper:", error);
     }
 };
 
 const showNews = (beritaId: string | number): void => {
-    if (!newsSwiper || allBeritas.length === 0) {
-        console.error("❌ Swiper not initialized or no beritas data");
-        return;
-    }
-
     // Cari index berdasarkan ID berita
     const index = allBeritas.findIndex((berita) => berita.id == beritaId);
 
     if (index >= 0 && index < allBeritas.length) {
         try {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            globalThis.scrollTo({ top: 0, behavior: "smooth" });
             newsSwiper.slideTo(index);
         } catch (error) {
             // console.error(`❌ Error navigating to slide ${index}:`, error);
@@ -238,7 +216,7 @@ const initSwiper = (): void => {
             speed: 1000,
         });
     } catch (error) {
-        console.error("❌ Error initializing regular Swiper:", error);
+        // console.error("❌ Error initializing regular Swiper:", error);
     }
 };
 
@@ -278,11 +256,11 @@ document.addEventListener("DOMContentLoaded", (): void => {
     // console.log("🏫 SMK PGRI 3 Malang - Initializing...");
 
     // Export functions ke global scope
-    window.showNews = showNews;
-    window.initializeNewsSlider = initializeNewsSlider;
+    globalThis.showNews = showNews;
+    globalThis.initializeNewsSlider = initializeNewsSlider;
 
     // Initialize semua components
-    window.Alpine = Alpine;
+    globalThis.Alpine = Alpine;
     Alpine.start();
 
     initMobileMenu();
@@ -290,9 +268,7 @@ document.addEventListener("DOMContentLoaded", (): void => {
     initSwiper();
     initScrollButtons();
     initChartGabungan();
-    initJurusanChart(); // ✅ Tambahkan inisialisasi chart jurusan
-
-    // console.log("🎉 All components initialized successfully");
+    initJurusanChart();
 });
 
 export { showNews, initializeNewsSlider };

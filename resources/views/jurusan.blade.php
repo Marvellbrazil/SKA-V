@@ -329,7 +329,7 @@
                     <div class="flex space-x-6 pb-4 slider snap-x snap-mandatory">
                         @foreach ($jurusans as $jurusan)
                         @if ($jurusan->departemen == "ELEKTRO")
-                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ $jurusan->gambar }}"
+                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ !is_null($jurusan->gambar) ? $assetBase . '/storage/' . $jurusan->gambar : 'https://placehold.co/600x400' }}"
                             departement="{{ $jurusan->departemen }}" loading="lazy">
                             {{ $jurusan->deskripsi }}
                         </x-jurcard>
@@ -346,7 +346,7 @@
                     <div class="flex space-x-6 pb-4 slider snap-x snap-mandatory lg:justify-center">
                         @foreach ($jurusans as $jurusan)
                         @if ($jurusan->departemen == "OTOMOTIF")
-                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ $jurusan->gambar }}"
+                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ !is_null($jurusan->gambar) ? $assetBase . '/storage/' . $jurusan->gambar : 'https://placehold.co/600x400' }}"
                             departement="{{ $jurusan->departemen }}" loading="lazy">
                             {{ $jurusan->deskripsi }}
                         </x-jurcard>
@@ -363,7 +363,7 @@
                     <div class=" flex space-x-6 pb-4 slider snap-x snap-mandatory lg:justify-center">
                         @foreach ($jurusans as $jurusan)
                         @if ($jurusan->departemen == "PEMESINAN")
-                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ $jurusan->gambar }}"
+                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ !is_null($jurusan->gambar) ? $assetBase . '/storage/' . $jurusan->gambar : 'https://placehold.co/600x400' }}"
                             departement="{{ $jurusan->departemen }}" loading="lazy">
                             {{ $jurusan->deskripsi }}
                         </x-jurcard>
@@ -380,7 +380,7 @@
                     <div class=" flex space-x-6 pb-4 slider snap-x snap-mandatory">
                         @foreach ($jurusans as $jurusan)
                         @if ($jurusan->departemen == "TIK")
-                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ $jurusan->gambar }}"
+                        <x-jurcard title="{!! $jurusan->jurusan !!}" image="{{ !is_null($jurusan->gambar) ? $assetBase . '/storage/' . $jurusan->gambar : 'https://placehold.co/600x400' }}"
                             departement="{{ $jurusan->departemen }}" loading="lazy">
                             {{ $jurusan->deskripsi }}
                         </x-jurcard>

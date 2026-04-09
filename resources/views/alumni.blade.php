@@ -43,105 +43,100 @@
                 <!-- Alumni Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch" id="alumni-container">
                     @foreach($alumnis as $alumni)
-                    <div
-                        class="alumni-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 h-full flex flex-col">
-                        <div class="relative h-40 bg-gradient-to-r {{ $alumni->bg_color }}">
-                            <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
-                                <img src="{{ $alumni->image && $alumni->image !== 'default.svg' ? $assetBase . '/storage/' . $alumni->image : $assetBase . '/images/default.svg' }}"
-                                    alt="{{ $alumni->name }}" loading="lazy"
-                                    class="alumni-image w-24 h-24 rounded-full object-cover">
-                            </div>
-                        </div>
-
-                        <!-- Konten -->
-                        <div class="pt-16 pb-6 px-6 text-center flex flex-col flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-1">{{ $alumni->name }}</h3>
-                            <p class="text-sm text-gray-600 mb-2">{{ $alumni->graduation }}</p>
-
-                            <div class="flex justify-center mb-4">
-                                <div
-                                    class="bg-gradient-to-r {{ $alumni->bg_color }} text-white py-2 px-5 rounded-full w-auto inline-block">
-                                    <p class="text-sm font-semibold whitespace-nowrap">{{ $alumni->position }}</p>
+                        <div
+                            class="alumni-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 h-full flex flex-col">
+                            <div class="relative h-40 bg-gradient-to-r {{ $alumni->bg_color }}">
+                                <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                                    <img src="{{ $alumni->image && $alumni->image !== 'default.svg' ? $assetBase . '/storage/' . $alumni->image : $assetBase . '/images/default.svg' }}"
+                                        alt="{{ $alumni->name }}" loading="lazy"
+                                        class="alumni-image w-24 h-24 rounded-full object-cover">
                                 </div>
                             </div>
 
+                            <!-- Konten -->
+                            <div class="pt-16 pb-6 px-6 text-center flex flex-col flex-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">{{ $alumni->name }}</h3>
+                                <p class="text-sm text-gray-600 mb-2">{{ $alumni->graduation }}</p>
 
-                            <div class="flex items-center justify-center mb-3 text-gray-700">
-                                <i class="fas fa-building text-sm mr-2"></i>
-                                <p class="text-sm font-medium">{{ $alumni->company }}</p>
-                            </div>
+                                <div class="flex justify-center mb-4">
+                                    <div
+                                        class="bg-gradient-to-r {{ $alumni->bg_color }} text-white py-2 px-5 rounded-full w-auto inline-block">
+                                        <p class="text-sm font-semibold whitespace-nowrap">{{ $alumni->position }}</p>
+                                    </div>
+                                </div>
 
-                            <p class="text-gray-600 text-sm mb-4 leading-relaxed flex-1">{{ $alumni->description }}</p>
 
-                            <div class="border-t border-gray-100 pt-4 mt-auto">
-                                <p class="text-xs font-semibold text-gray-500 mb-2">PRESTASI:</p>
-                                <div class="flex flex-wrap justify-center gap-2">
-                                    @if(!empty($achievementsArray))
-                                    @foreach($achievementsArray as $achievement)
-                                    <span
-                                        class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full">{{ $achievement }}</span>
-                                    @endforeach
-                                    @else
-                                    <span class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full">Tidak
-                                        tersedia</span>
-                                    @endif
+                                <div class="flex items-center justify-center mb-3 text-gray-700">
+                                    <i class="fas fa-building text-sm mr-2"></i>
+                                    <p class="text-sm font-medium">{{ $alumni->company }}</p>
+                                </div>
+
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed flex-1">{{ $alumni->description }}</p>
+
+                                <div class="border-t border-gray-100 pt-4 mt-auto">
+                                    <p class="text-xs font-semibold text-gray-500 mb-2">PRESTASI:</p>
+                                    <div class="flex flex-wrap justify-center gap-2">
+                                        @if(!empty($achievementsArray))
+                                            @foreach($achievementsArray as $achievement)
+                                                <span
+                                                    class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full">{{ $achievement }}</span>
+                                            @endforeach
+                                        @else
+                                            <span class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full">Tidak
+                                                tersedia</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
 
-                <!-- Pagination control - Jika menggunakan pagination -->
                 @if($alumnis->hasPages())
-                <div class="flex justify-center mt-12 space-x-2" id="pagination-controls">
-                    {{ $alumnis->links() }}
-                </div>
+                    <div class="flex justify-center mt-12 space-x-2" id="pagination-controls">
+                        {{ $alumnis->links() }}
+                    </div>
                 @endif
             </div>
         </section>
     </div>
 
     <style>
-    .alumni-card {
-        transition: all 0.3s ease;
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    }
+        .alumni-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
 
-    .alumni-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
+        .alumni-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
 
-    .alumni-image {
-        transition: all 0.3s ease;
-        border: 4px solid white;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
+        .alumni-image {
+            transition: all 0.3s ease;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
 
-    .alumni-card:hover .alumni-image {
-        transform: scale(1.05);
-    }
+        .alumni-card:hover .alumni-image {
+            transform: scale(1.05);
+        }
 
-    .pagination-btn {
-        transition: all 0.3s ease;
-    }
+        .pagination-btn {
+            transition: all 0.3s ease;
+        }
 
-    .pagination-btn.active {
-        background-color: #3b82f6;
-        color: white;
-    }
+        .pagination-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
     </style>
 
     <!-- Jika ingin menggunakan pagination dengan JavaScript, gunakan script di bawah -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Konfigurasi untuk frontend pagination (opsional)
-        const itemsPerPage = 6;
-        let currentPage = 1;
-
-        // Jika ingin implementasi pagination client-side, bisa menggunakan kode di sini
-        // Tapi karena kita sudah menggunakan Laravel pagination, script ini bisa dihapus
-    });
+        document.addEventListener('DOMContentLoaded', function () {
+            const itemsPerPage = 6;
+            let currentPage = 1;
+        });
     </script>
 </x-layout>

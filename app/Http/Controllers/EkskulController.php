@@ -7,13 +7,9 @@ use App\Models\Ekskul;
 
 class EkskulController extends Controller
 {
-    public function index(Request $request) {
-    $ekskuls = Ekskul::latest()->paginate(6);
-
-    if ($request->ajax() || $request->has('ajax')) {
-            return view('ekskul', compact('ekskuls'));
-        }
-
+    public function index(Request $request)
+    {
+        $ekskuls = Ekskul::latest()->paginate(6);
         return view('ekskul', compact('ekskuls'));
     }
 }

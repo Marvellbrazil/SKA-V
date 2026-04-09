@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('jurusan');
             $table->enum('departemen', ['OTOMOTIF', 'TIK', 'ELEKTRO', 'PEMESINAN']);
             $table->string('deskripsi');
-            $table->text('gambar');
+            $table->text('gambar')->nullable();
             $table->timestamps();
         });
     }

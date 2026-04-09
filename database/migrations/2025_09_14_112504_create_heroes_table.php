@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('heroes', function (Blueprint $table) {
             $table->id();
-            $table->text('gambar');
+            $table->text('gambar')->nullable();
             $table->string('judul', 30);
             $table->string('subjudul', 50);
             $table->timestamps();

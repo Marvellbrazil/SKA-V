@@ -8,8 +8,7 @@ class BeritaController extends Controller
 {
     public function index(Request $request)
     {
-        $type = $request->get('type', 'all');
-
+        $type = $request->input('type', 'all');
         $query = Berita::query();
 
         if ($type !== 'all') {
@@ -17,30 +16,6 @@ class BeritaController extends Controller
         }
 
         $beritas = $query->latest()->paginate(9)->withQueryString();
-
-        // Jika request AJAX, kembalikan JSON
-        if ($request->ajax() || $request->has('ajax')) {
-            return response()->json([
-                'beritas'    => $beritas->map(function ($berita) {
-                    return [
-                        'gambar_url' => $berita->gambar_url,
-                        'title'      => $berita->title,
-                        'type'       => $berita->type,
-                        'created_at' => $berita->created_at->format('d M Y'),
-                        'views'      => $berita->views,
-                        'deskripsi'  => $berita->deskripsi,
-                        'slug'       => $berita->slug,
-                    ];
-                }),
-                'pagination' => [
-                    'current_page'  => $beritas->currentPage(),
-                    'last_page'     => $beritas->lastPage(),
-                    'next_page_url' => $beritas->nextPageUrl(),
-                    'prev_page_url' => $beritas->previousPageUrl(),
-                    'total'         => $beritas->total(),
-                ],
-            ]);
-        }
 
         return view('berita', compact('beritas', 'type'));
     }

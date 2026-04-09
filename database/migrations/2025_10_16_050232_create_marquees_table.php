@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('marquees', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->integer('urutan')->default(0);
             $table->timestamps();
         });

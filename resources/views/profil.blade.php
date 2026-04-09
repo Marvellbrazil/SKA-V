@@ -71,7 +71,7 @@
         <section class="relative h-[535px] mt-2 rounded-xl overflow-hidden">
             <div class="absolute inset-0 w-full h-full hover-scale">
                 <div class="absolute inset-0 bg-gradient-to-t from-transparent via-black/5 to-black/70"></div>
-                <img src="{{ $assetBase . '/storage/' . $profil->heroImage }}" alt="Hero SKARIGA"
+                <img src="{{ !is_null($profil->heroImage) ? $assetBase . '/storage/' . $profil->heroImage : 'https://placehold.co/600x400' }}" alt="Hero SKARIGA"
                     class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             </div>
@@ -88,16 +88,16 @@
                 <!-- Kolom Kiri: Gambar -->
                 <div class="grid gap-4">
                     <!-- Gambar besar di atas -->
-                    <img src="{{ $assetBase . '/storage/' . $profil->profilImage1 }}"
+                    <img src="{{ !is_null($profil->profilImage1) ? $assetBase . '/storage/' . $profil->profilImage1 : 'https://placehold.co/600x400' }}"
                         class="rounded-xl shadow-md w-full h-64 object-cover hover-lift hover-brightness"
                         alt="Keseluruhan Gedung">
 
                     <!-- 3 gambar kecil di bawah -->
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="{{ $assetBase . '/storage/' . $profil->profilImage2 }}"
+                        <img src="{{ !is_null($profil->profilImage2) ? $assetBase . '/storage/' . $profil->profilImage2 : 'https://placehold.co/600x400' }}"
                             class="rounded-xl shadow-md h-40 w-full object-cover hover-lift hover-brightness"
                             alt="Gedung 1">
-                        <img src="{{ $assetBase . '/storage/' . $profil->profilImage3 }}"
+                        <img src="{{ !is_null($profil->profilImage3) ? $assetBase . '/storage/' . $profil->profilImage3 : 'https://placehold.co/600x400' }}"
                             class="rounded-xl shadow-md h-40 w-full object-cover hover-lift hover-brightness"
                             alt="Gedung 2">
                     </div>
@@ -146,7 +146,7 @@
                 <div class="grid md:grid-cols-2 items-start relative py-12">
                     <div class="relative flex justify-center items-start w-full">
                         <!-- Gambar Kepala Sekolah - Desktop -->
-                        <img src="{{ $assetBase . '/storage/' . $profil->visiImage }}"
+                        <img src="{{ !is_null($profil->visiImage) ? $assetBase . '/storage/' . $profil->visiImage : $assetBase . '/assets/bp.Luqman_kepsek-removebg-preview.png' }}"
                             alt="Kepala Sekolah SMK PGRI 3 Malang"
                             class="hidden md:block absolute top-0 left-[40%] transform -translate-x-1/2 -translate-y-[41.2%] w-full md:w-[100%] max-h-[450px] object-contain">
 
@@ -160,9 +160,9 @@
                         <!-- Mobile Layout -->
                         <div class="md:hidden flex flex-col items-center w-full bg-transparent rounded-2xl p-4">
                             <img src="{{ $assetBase . '/storage/' . $profil->visiImage }}"
-                                alt="Kepala Sekolah SMK PGRI 3 Malang" 
+                                alt="Kepala Sekolah SMK PGRI 3 Malang"
                                 class="w-full max-w-[200px] object-contain mb-4">
-                            
+
                             <div class="text-center text-white w-full px-2">
                                 <h3 class="text-lg font-bold leading-tight drop-shadow-lg mb-2">
                                     {{ $profil->visiImageName }}
@@ -188,7 +188,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 @foreach ($profil->misis as $misi)
                 <x-profilcard bgColor="{{ $misi->misiColor }}" title="{!! $misi->misiTitle !!}"
-                    image="{{ $assetBase . '/storage/' . $misi->misiImage }}">
+                    image="{{ !is_null($misi->misiImage) ? $assetBase . '/storage/' . $misi->misiImage : 'https://placehold.co/50x50' }}">
                     {{ $misi->misiDesc }}
                 </x-profilcard>
                 @endforeach

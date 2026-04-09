@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('profils', function (Blueprint $table) {
             $table->id();
-            $table->text('heroImage');
+            $table->text('heroImage')->nullable();
             $table->string('heroTitle', 30);
 
-            $table->text('profilImage1');
-            $table->text('profilImage2');
-            $table->text('profilImage3');
+            $table->text('profilImage1')->nullable();
+            $table->text('profilImage2')->nullable();
+            $table->text('profilImage3')->nullable();
             $table->string('profilDesc', 500);
 
-            $table->text('visiImage');
+            $table->text('visiImage')->nullable();
             $table->string('visiImageName', 200);
             $table->string('visiDesc', 500);
 
@@ -33,7 +33,7 @@ return new class extends Migration
         Schema::create('misis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id')->constrained()->onDelete('cascade');
-            $table->text('misiImage');
+            $table->text('misiImage')->nullable();
             $table->string('misiTitle', 40);
             $table->string('misiDesc', 200);
             $table->enum('misiColor', ['BLUE', 'GREEN', 'ORANGE', 'RED']);

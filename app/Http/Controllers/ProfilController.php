@@ -11,9 +11,7 @@ class ProfilController extends Controller
 {
     public function index()
     {
-        // Ambil data profil pertama
         $profil = Profil::first();
-
-        return view('profil', ['profil' => $profil]);
+        return view('profil', compact('profil'));
     }
 }

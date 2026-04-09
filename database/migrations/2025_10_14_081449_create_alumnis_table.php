@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('position', 100);
             $table->string('company', 100);
             $table->text('description');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('bg_color', 50)->default('from-[#2ECC71] to-[#27AE60]');
             $table->json('achievements')->nullable();
             $table->timestamps();

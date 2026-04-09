@@ -21,83 +21,82 @@ class JurusanController extends Controller
     }
 
     public function incrementStats(Request $request)
-{
-    Log::info('=== JURUSAN INCREMENT STATS CALLED ===');
-    Log::info('IP: ' . $request->ip());
-    Log::info('User Agent: ' . $request->userAgent());
-    Log::info('Request Data: ', $request->all());
-    Log::info('Headers: ', $request->headers->all());
-    Log::info('Session ID: ' . session()->getId());
-    Log::info('CSRF Token: ' . csrf_token());
-    Log::info('=====================================');
+    {
+        Log::info('=== JURUSAN INCREMENT STATS CALLED ===');
+        Log::info('IP: ' . $request->ip());
+        Log::info('User Agent: ' . $request->userAgent());
+        Log::info('Request Data: ', $request->all());
+        Log::info('Headers: ', $request->headers->all());
+        Log::info('Session ID: ' . session()->getId());
+        Log::info('CSRF Token: ' . csrf_token());
+        Log::info('=====================================');
 
-    // Validasi sederhana dulu
-    $departemen = $request->departemen;
-    $type = $request->type;
+        // Validasi sederhana dulu
+        $departemen = $request->departemen;
+        $type = $request->type;
 
-    if (!in_array($departemen, ['elektro', 'otomotif', 'pemesinan', 'tik'])) {
-        Log::error('Invalid departemen: ' . $departemen);
-        return response()->json(['success' => false, 'message' => 'Invalid departemen'], 400);
-    }
-
-    if (!in_array($type, ['click', 'view'])) {
-        Log::error('Invalid type: ' . $type);
-        return response()->json(['success' => false, 'message' => 'Invalid type'], 400);
-    }
-
-    try {
-        $today = now()->format('Y-m-d');
-
-        Log::info("Processing: {$departemen}, {$type}, {$today}");
-
-        $existing = DB::table('jurusan_statistiks')
-            ->where('tanggal', $today)
-            ->where('departemen', $departemen)
-            ->where('type', $type)
-            ->first();
-
-        if ($existing) {
-            DB::table('jurusan_statistiks')
-                ->where('id', $existing->id)
-                ->update(['jumlah' => $existing->jumlah + 1]);
-            $newCount = $existing->jumlah + 1;
-            Log::info("Updated existing: {$newCount}");
-        } else {
-            DB::table('jurusan_statistiks')->insert([
-                'tanggal' => $today,
-                'departemen' => $departemen,
-                'type' => $type,
-                'jumlah' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-            $newCount = 1;
-            Log::info("Created new: {$newCount}");
+        if (!in_array($departemen, ['elektro', 'otomotif', 'pemesinan', 'tik'])) {
+            Log::error('Invalid departemen: ' . $departemen);
+            return response()->json(['success' => false, 'message' => 'Invalid departemen'], 400);
         }
 
-        Log::info("✅ Successfully saved to database");
+        if (!in_array($type, ['click', 'view'])) {
+            Log::error('Invalid type: ' . $type);
+            return response()->json(['success' => false, 'message' => 'Invalid type'], 400);
+        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Statistik berhasil diupdate',
-            'data' => [
-                'departemen' => $departemen,
-                'type' => $type,
-                'count' => $newCount,
-                'saved_to' => 'database'
-            ]
-        ]);
+        try {
+            $today = now()->format('Y-m-d');
 
-    } catch (\Exception $e) {
-        Log::error('❌ Database error: ' . $e->getMessage());
-        Log::error('Stack trace: ' . $e->getTraceAsString());
+            Log::info("Processing: {$departemen}, {$type}, {$today}");
 
-        return response()->json([
-            'success' => false,
-            'message' => 'Gagal menyimpan statistik: ' . $e->getMessage()
-        ], 500);
+            $existing = DB::table('jurusan_statistiks')
+                ->where('tanggal', $today)
+                ->where('departemen', $departemen)
+                ->where('type', $type)
+                ->first();
+
+            if ($existing) {
+                DB::table('jurusan_statistiks')
+                    ->where('id', $existing->id)
+                    ->update(['jumlah' => $existing->jumlah + 1]);
+                $newCount = $existing->jumlah + 1;
+                Log::info("Updated existing: {$newCount}");
+            } else {
+                DB::table('jurusan_statistiks')->insert([
+                    'tanggal' => $today,
+                    'departemen' => $departemen,
+                    'type' => $type,
+                    'jumlah' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+                $newCount = 1;
+                Log::info("Created new: {$newCount}");
+            }
+
+            Log::info("✅ Successfully saved to database");
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Statistik berhasil diupdate',
+                'data' => [
+                    'departemen' => $departemen,
+                    'type' => $type,
+                    'count' => $newCount,
+                    'saved_to' => 'database'
+                ]
+            ]);
+        } catch (\Exception $e) {
+            Log::error('❌ Database error: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal menyimpan statistik: ' . $e->getMessage()
+            ], 500);
+        }
     }
-}
 
     public function getStats(Request $request)
     {
@@ -124,7 +123,6 @@ class JurusanController extends Controller
                 'success' => true,
                 'data' => $mergedStats
             ]);
-
         } catch (\Exception $e) {
             Log::error('Error getStats: ' . $e->getMessage());
             return response()->json([

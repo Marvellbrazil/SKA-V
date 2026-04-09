@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('deskripsi', 175);
             $table->text('content');
-            $table->string('gambar')->nullable()->default('default.svg');
+            $table->string('gambar')->nullable();
             $table->integer('views')->default(0);
             $table->enum('type', ['PRESTASI', 'KEGIATAN', 'PENGUMUMAN', 'ACARA']);
             $table->timestamps();

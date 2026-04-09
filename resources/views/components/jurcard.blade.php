@@ -1,9 +1,9 @@
-@props(['title', 'image', 'departement'])
+@props(['image', 'title', 'departement'])
 
 <div
     class="w-[400px] pb-5 shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transform transition duration-300 snap-start">
 
-    <img src="{{ $assetBase . '/storage/' . $image }}" alt="{{ $title }}" class="h-56 w-full object-cover" loading="lazy" />
+    <img src="{{ $image }}" alt="{{ $title }}" class="h-56 w-full object-cover" loading="lazy" />
 
     <div class="p-4">
         <h4 class="font-bold text-lg mb-1">{{ $title }}</h4>

@@ -8,7 +8,7 @@
                     <div class="bg-white rounded-xl shadow-md overflow-hidden">
                         <!-- Gambar Utama -->
                         <div class="relative">
-                            <img src="{{ $assetBase . '/storage/' . $berita->gambar }}" alt="{{ $berita->title }}"
+                            <img src="{{ !is_null($berita->gambar) ? $assetBase . '/storage/' . $berita->gambar : 'https://placehold.co/600x400' }}" alt="{{ $berita->title }}"
                                 class="w-full h-[600px] object-cover">
                             <div class="absolute top-4 left-4">
                                 <span class="bg-customBlue text-white px-3 py-1 rounded-full text-xs font-medium">

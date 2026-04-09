@@ -11,10 +11,6 @@ class PrestasiController extends Controller
         $prestasis = Prestasi::latest()->paginate(6);
         $totalPrestasi = Prestasi::latest()->count();
 
-        if ($request->ajax()) {
-            return view('prestasi', compact('prestasis', 'totalPrestasi'));
-        }
-
         return view('prestasi', compact('prestasis', 'totalPrestasi'));
     }
 }
