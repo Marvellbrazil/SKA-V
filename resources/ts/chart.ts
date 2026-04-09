@@ -102,7 +102,7 @@ export class JurusanChartManager {
                 this.saveStatsToLocalStorage();
             }
         } catch (error) {
-            console.error("❌ Failed to load stats from server:", error);
+            // console.error("❌ Failed to load stats from server:", error);
             // Fallback ke localStorage
             this.loadStatsFromLocalStorage();
         }
@@ -122,7 +122,7 @@ export class JurusanChartManager {
                     tik: Number(localStats.tik) || 0,
                 };
             } catch (error) {
-                console.error("Error loading stats from localStorage:", error);
+                // console.error("Error loading stats from localStorage:", error);
             }
         }
     }
@@ -538,13 +538,13 @@ export class JurusanChartManager {
         `;
 
         document.body.appendChild(notification);
-        console.log(`📢 Notifikasi: Sedang melihat ${sectionId}`);
+        // console.log(`📢 Notifikasi: Sedang melihat ${sectionId}`);
     }
 
     private hideViewingNotification(): void {
         const existing = document.querySelectorAll(".viewing-notification");
         existing.forEach((notif) => notif.remove());
-        console.log("📢 Semua notifikasi viewing dihapus");
+        // console.log("📢 Semua notifikasi viewing dihapus");
     }
 
     private startViewTimeTracking(sectionId: keyof DepartmentStats): void {
@@ -557,13 +557,13 @@ export class JurusanChartManager {
                 this.sectionViewTime[sectionId] = elapsed;
 
                 if (Math.round(elapsed / 1000) % 2 === 0 && elapsed < 8000) {
-                    console.log(
-                        `⏰ ${sectionId}: ${Math.round(elapsed / 1000)}s`
-                    );
+                    // console.log(
+                    //     `⏰ ${sectionId}: ${Math.round(elapsed / 1000)}s`
+                    // );
                 }
 
                 if (elapsed >= 8000) {
-                    console.log(`🎯 AUTO-INCREMENT untuk: ${sectionId}`);
+                    // console.log(`🎯 AUTO-INCREMENT untuk: ${sectionId}`);
 
                     this.incrementStat(sectionId, "view"); // 🔴 Pakai method baru
 
@@ -606,7 +606,7 @@ export class JurusanChartManager {
         `;
 
             document.body.appendChild(notification);
-            console.log(`✅ Auto-increment: +1 untuk ${sectionId}`);
+            // console.log(`✅ Auto-increment: +1 untuk ${sectionId}`);
 
             setTimeout(() => {
                 if (notification.parentNode) {
@@ -630,7 +630,7 @@ export class JurusanChartManager {
                 behavior: "smooth",
             });
         } else {
-            console.warn(`❌ Section ${sectionId} not found for scrolling`);
+            // console.warn(`❌ Section ${sectionId} not found for scrolling`);
         }
     }
 
@@ -664,7 +664,7 @@ export class JurusanChartManager {
 
             const result = await response.json();
         } catch (error) {
-            console.error("❌ Gagal mengirim statistik:", error);
+            // console.error("❌ Gagal mengirim statistik:", error);
             this.queueFailedRequest(departemen, type);
         }
     }
@@ -688,7 +688,7 @@ export class JurusanChartManager {
             return csrfHeader.getAttribute("content") || "";
         }
 
-        console.warn("⚠️ CSRF token tidak ditemukan");
+        // console.warn("⚠️ CSRF token tidak ditemukan");
         return "";
     }
 
@@ -710,7 +710,7 @@ export class JurusanChartManager {
                 JSON.stringify(failedRequests)
             );
         } catch (error) {
-            console.error("Gagal menyimpan failed request:", error);
+            // console.error("Gagal menyimpan failed request:", error);
         }
     }
 
@@ -739,7 +739,7 @@ export class JurusanChartManager {
             // Simpan ulang yang gagal
             localStorage.setItem("failedStatsRequests", JSON.stringify(failed));
         } catch (error) {
-            console.error("Error retrying failed requests:", error);
+            // console.error("Error retrying failed requests:", error);
         }
     }
 
@@ -761,13 +761,13 @@ export class JurusanChartManager {
     // Update chart dengan data baru
     public updateChart(): void {
         // 🔴 DEBUG: Log current stats
-        console.log("🔢 Current stats:", this.stats);
-        console.log("🔢 Stats types:", {
-            elektro: typeof this.stats.elektro,
-            otomotif: typeof this.stats.otomotif,
-            pemesinan: typeof this.stats.pemesinan,
-            tik: typeof this.stats.tik,
-        });
+        // console.log("🔢 Current stats:", this.stats);
+        // console.log("🔢 Stats types:", {
+        //     elektro: typeof this.stats.elektro,
+        //     otomotif: typeof this.stats.otomotif,
+        //     pemesinan: typeof this.stats.pemesinan,
+        //     tik: typeof this.stats.tik,
+        // });
 
         if (!this.chart) {
             this.initializeChart();
@@ -915,7 +915,7 @@ export async function initChartGabungan(): Promise<void> {
             plugins: [arrowPlugin],
         });
     } catch (error) {
-        console.error("❌ Error initializing chart gabungan:", error);
+        // console.error("❌ Error initializing chart gabungan:", error);
     }
 }
 

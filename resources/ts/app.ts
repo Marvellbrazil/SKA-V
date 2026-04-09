@@ -1,5 +1,5 @@
 declare global {
-    interface globalThis {
+    interface window {
         Alpine: typeof Alpine;
         showNews: (index: number) => void;
         initializeNewsSlider: () => void;
@@ -10,7 +10,7 @@ declare global {
 import "../css/app.css";
 import Alpine from "alpinejs";
 import Swiper from "swiper";
-import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { initChartGabungan, initJurusanChart } from "./chart";
 import { initScrollButtons } from "./scroll";
 import MicroModal from "micromodal";
@@ -41,12 +41,14 @@ const initializeNewsSlider = (): void => {
     // console.log("🔄 Initializing news slider...");
 
     try {
-        // Ambil data berita dari globalThis object
-        const beritasData = globalThis.beritas;
-        // console.log("📊 Beritas data:", beritasData);
+        const beritasData = window.beritas;
+
+        if (!beritasData || !Array.isArray(beritasData) || beritasData.length === 0) {
+            createDefaultSlide();
+            return;
+        }
 
         allBeritas = beritasData;
-        // console.log(`📰 Found ${allBeritas.length} beritas`);
 
         // Setup Swiper container
         const swiperWrapper = document.getElementById("x-headnews");
@@ -59,18 +61,9 @@ const initializeNewsSlider = (): void => {
             const slide = document.createElement("div");
             slide.className = "swiper-slide relative w-full h-full";
 
-            // Handle image path
-            let imagePath = berita.gambar;
-            if (
-                !imagePath.startsWith("storage/") &&
-                !imagePath.startsWith("http")
-            ) {
-                imagePath = `storage/${berita.gambar}`;
-            }
-
             slide.innerHTML = `
                 <a href="/berita/${berita.id}">
-                    <img src="${imagePath}" alt="${berita.title}"
+                    <img src="${berita.image}" alt="${berita.title}"
                         class="headnews-img w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover"
                         onerror="this.src='https://placehold.co/600x400'"/>
                     <div class="absolute bottom-0 left-0 w-full h-1/2 gradient-overlay"></div>
@@ -136,14 +129,14 @@ const initializeSwiperInstance = (): void => {
 
     try {
         newsSwiper = new Swiper(".mySwiper", {
-            modules: [Navigation, Pagination, Autoplay, EffectFade],
+            modules: [Navigation, Pagination, Autoplay],
             loop: allBeritas.length > 1,
             autoplay:
                 allBeritas.length > 1
                     ? {
-                          delay: 5000,
-                          disableOnInteraction: false,
-                      }
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }
                     : false,
             pagination: {
                 el: ".swiper-pagination",
@@ -175,7 +168,7 @@ const showNews = (beritaId: string | number): void => {
 
     if (index >= 0 && index < allBeritas.length) {
         try {
-            globalThis.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: "smooth" });
             newsSwiper.slideTo(index);
         } catch (error) {
             // console.error(`❌ Error navigating to slide ${index}:`, error);
@@ -198,7 +191,7 @@ const initSwiper = (): void => {
     // Fallback untuk swiper biasa
     try {
         new Swiper(".mySwiper", {
-            modules: [Navigation, Pagination, Autoplay, EffectFade],
+            modules: [Navigation, Pagination, Autoplay],
             loop: true,
             autoplay: {
                 delay: 5000,
@@ -256,11 +249,11 @@ document.addEventListener("DOMContentLoaded", (): void => {
     // console.log("🏫 SMK PGRI 3 Malang - Initializing...");
 
     // Export functions ke global scope
-    globalThis.showNews = showNews;
-    globalThis.initializeNewsSlider = initializeNewsSlider;
+    window.showNews = showNews;
+    window.initializeNewsSlider = initializeNewsSlider;
 
     // Initialize semua components
-    globalThis.Alpine = Alpine;
+    window.Alpine = Alpine;
     Alpine.start();
 
     initMobileMenu();
