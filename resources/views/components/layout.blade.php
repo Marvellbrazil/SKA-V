@@ -91,19 +91,6 @@
         }
     };
 
-    setInterval(() => {
-        fetch('/api/heartbeat', {
-            method: 'POST',
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                heartbeat: true
-            })
-        }).catch(() => {}); // Silent fail
-    }, 30000);
-
     window.addEventListener('beforeunload', function() {
         // Trigger API call untuk update status
         fetch('/api/visitor-leave', {
