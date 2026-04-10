@@ -5,16 +5,19 @@ namespace App\Services;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
-class GeminiChatService
+class GroqChatService
 {
     protected string $endpoint;
 
     protected string $apiKey;
 
+    protected string $model;
+
     public function __construct()
     {
-        $this->apiKey = env('GEMINI_API_KEY');
-        $this->endpoint = env('GEMINI_ENDPOINT').env('GEMINI_API_KEY');
+        $this->apiKey = env('GROQ_API_KEY');
+        $this->endpoint = 'https://api.groq.com/openai/v1/chat/completions';
+        $this->model = env('GROQ_MODEL', 'llama-3.3-70b-versatile');
     }
 
     public function ask(string $prompt): string
@@ -66,6 +69,7 @@ class GeminiChatService
 
         $http = Http::withHeaders([
             'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer '.$this->apiKey,
         ]);
 
         if (! $isProduction) {
@@ -73,21 +77,25 @@ class GeminiChatService
         }
 
         $response = $http->post($this->endpoint, [
-            'contents' => [
+            'model' => $this->model,
+            'messages' => [
+                [
+                    'role' => 'system',
+                    'content' => $systemPrompt,
+                ],
                 [
                     'role' => 'user',
-                    'parts' => [
-                        ['text' => $systemPrompt."\n\nPertanyaan pengguna:\n".$prompt],
-                    ],
+                    'content' => $prompt,
                 ],
             ],
+            'temperature' => 0.7,
+            'max_tokens' => 1024,
         ]);
 
-        // Ambil hasilnya
         if ($response->successful()) {
             $data = $response->json();
 
-            return $data['candidates'][0]['content']['parts'][0]['text'] ?? 'Maaf, saya tidak tahu jawabannya.';
+            return $data['choices'][0]['message']['content'] ?? 'Maaf, saya tidak tahu jawabannya.';
         }
 
         return 'Terjadi kesalahan: '.$response->body();
