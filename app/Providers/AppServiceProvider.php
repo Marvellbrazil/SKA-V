@@ -10,25 +10,35 @@ use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
     public function boot(): void
     {
-        if (app()->environment('production') || env('APP_ENV') === 'production') {
+        if (app()->environment('production') || str_contains(config('app.url'), 'https')) {
             URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', true);
         }
-
-        View::composer('*', function ($view) {
-            $assetBase = config('app.url');
-
-            $view->with('assetBase', $assetBase);
-        });
 
         SymfonyRequest::setTrustedProxies(
             ['*'],
             SymfonyRequest::HEADER_X_FORWARDED_FOR |
-                                SymfonyRequest::HEADER_X_FORWARDED_HOST |
-                                SymfonyRequest::HEADER_X_FORWARDED_PROTO |
-                                SymfonyRequest::HEADER_X_FORWARDED_PORT
+            SymfonyRequest::HEADER_X_FORWARDED_HOST |
+            SymfonyRequest::HEADER_X_FORWARDED_PROTO |
+            SymfonyRequest::HEADER_X_FORWARDED_PORT
         );
+
+        View::composer('*', function ($view) {
+            $view->with('assetBase', rtrim(config('app.url'), '/'));
+        });
 
         View::composer('*', function ($view) {
             try {
@@ -37,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
                     ->orderBy('nama')
                     ->get();
                 $view->with('marquees', $marquees);
-            } catch (\Exception) {
+            } catch (\Exception $e) {
                 $view->with('marquees', collect());
             }
         });
