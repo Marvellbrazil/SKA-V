@@ -500,10 +500,10 @@ export class JurusanChartManager {
             this.sectionViewTime[this.currentActiveSection] = 0;
         }
 
-        // Activate new section
+        // Activate new section - hanya tracking via click, tanpa notifikasi
         this.currentActiveSection = sectionId;
         this.lastVisibleTime[sectionId] = Date.now();
-        this.showViewingNotification(sectionId);
+        // this.showViewingNotification(sectionId); // Dinonaktifkan
         this.startViewTimeTracking(sectionId as keyof DepartmentStats);
     }
 
@@ -514,12 +514,13 @@ export class JurusanChartManager {
             );
             this.lastVisibleTime[this.currentActiveSection] = 0;
             this.sectionViewTime[this.currentActiveSection] = 0;
-            this.hideViewingNotification();
+            // this.hideViewingNotification(); // Dinonaktifkan
             this.currentActiveSection = null;
         }
     }
 
-    // Notifikasi "Sedang Melihat"
+    // Notifikasi "Sedang Melihat" - DINONAKTIFKAN
+    /*
     private showViewingNotification(sectionId: string): void {
         const existing = document.querySelector(
             `.viewing-notification[data-section="${sectionId}"]`
@@ -538,14 +539,13 @@ export class JurusanChartManager {
         `;
 
         document.body.appendChild(notification);
-        // console.log(`📢 Notifikasi: Sedang melihat ${sectionId}`);
     }
 
     private hideViewingNotification(): void {
         const existing = document.querySelectorAll(".viewing-notification");
         existing.forEach((notif) => notif.remove());
-        // console.log("📢 Semua notifikasi viewing dihapus");
     }
+    */
 
     private startViewTimeTracking(sectionId: keyof DepartmentStats): void {
         this.stopViewTimeTracking(sectionId);
@@ -563,11 +563,9 @@ export class JurusanChartManager {
                 }
 
                 if (elapsed >= 8000) {
-                    // console.log(`🎯 AUTO-INCREMENT untuk: ${sectionId}`);
-
-                    this.incrementStat(sectionId, "view"); // 🔴 Pakai method baru
-
-                    this.showAutoIncrementNotification(sectionId);
+                    // View tracking DINONAKTIFKAN - hanya click yang dihitung
+                    // this.incrementStat(sectionId, "view");
+                    // this.showAutoIncrementNotification(sectionId);
 
                     this.stopViewTimeTracking(sectionId);
                     this.lastVisibleTime[sectionId] = 0;

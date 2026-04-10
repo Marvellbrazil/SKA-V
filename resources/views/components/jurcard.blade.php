@@ -8,10 +8,11 @@
         'PEMESINAN' => 'border-blue-500',
     ];
     $colorClass = $deptColors[$departement] ?? 'border-gray-500';
+    $deptLower = strtolower($departement);
 @endphp
 
 <div class="jur-card w-[380px] shrink-0 rounded-2xl overflow-hidden cursor-pointer group"
-     onclick="openJurusanModal('{{ $title }}', '{{ $departement }}', `{!! nl2br(e($slot)) !!}`, '{{ $image }}')">
+     onclick="handleJurusanClick('{{ $title }}', '{{ $departement }}', `{!! nl2br(e($slot)) !!}`, '{{ $image }}', '{{ $deptLower }}')">
     
     <!-- Image Container with Overlay -->
     <div class="relative h-56 overflow-hidden">
@@ -39,6 +40,26 @@
     </div>
 </div>
 
+<script>
+function handleJurusanClick(title, dept, desc, image, departemen) {
+    // Kirim statistik
+    fetch('{{ route("jurusan.increment-stats") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            departemen: departemen,
+            type: 'click'
+        })
+    }).catch(err => console.error('Error tracking:', err));
+    
+    // Buka modal
+    openJurusanModal(title, dept, desc, image);
+}
+</script>
+
 <style>
 .jur-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -46,5 +67,31 @@
 .jur-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Scrollbar yang menarik */
+.slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.slider::-webkit-scrollbar-track {
+    background: linear-gradient(to right, #e2e8f0, #f1f5f9);
+    border-radius: 4px;
+}
+
+.slider::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.slider::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.slider {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
 }
 </style>
