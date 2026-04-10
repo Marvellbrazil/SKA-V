@@ -91,7 +91,6 @@
                     </div>
                 </section>
 
-                <!-- Top 3 Jurusan Section (Setengah Lebar) - DIUBAH -->
                 <section
                     class="flex-1 bg-gray-100 rounded-xl p-4 md:p-6 shadow-2xl min-h-auto transition-transform duration-300 hover:scale-105">
                     <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-center mb-4 md:mb-6">STATISTIK KUNJUNGAN DEPARTEMEN</h2>
@@ -101,7 +100,7 @@
                             <canvas id="jurusanPieChart"></canvas>
                         </div>
 
-                        <div class="chart-legend inline-flex" id="chartLegend">
+                        <div class="hidden chart-legend md:inline-flex" id="chartLegend">
                             <!-- Legend akan diisi oleh JavaScript -->
                         </div>
                     </div>

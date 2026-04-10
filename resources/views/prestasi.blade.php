@@ -1,7 +1,5 @@
 <x-layout title="Prestasi - SMK PGRI 3 Malang">
     <div class="h-full container mx-auto px-4 py-6">
-        <!-- Hero Section -->
-        <!-- ✅ Versi Desktop -->
         <section class="hidden lg:grid w-full container mx-auto py-12 grid-cols-2 gap-10 relative z-10">
             <div class="flex flex-col justify-center space-y-6">
                 <div class="flex items-center gap-3 mb-4">
@@ -12,7 +10,7 @@
                         Menjadi <span class="bg-yellow-300 px-1 italic">Sang Juara Selanjutnya!</span>
                     </h2>
                 </div>
-                <a href="" class="w-max">
+                <a href="/pendaftaran" class="w-max">
                     <button
                         class="w-max bg-customBlue text-white px-6 py-3 rounded-lg flex items-center gap-2 transition transform hover:scale-105 hover:bg-customOrange hover:shadow-lg">
                         <span>Daftar Sekarang</span>
@@ -68,14 +66,16 @@
                 Menjadi <span class="bg-yellow-300 px-1 italic">Sang Juara Selanjutnya!</span>
             </h2>
             <div class="flex justify-center mb-6">
-                <button
-                    class="bg-customBlue text-white px-5 py-2 rounded-lg flex items-center gap-2 transition transform hover:scale-105 hover:bg-customOrange hover:shadow-lg text-sm sm:text-base">
-                    <span>Daftar Sekarang</span>
-                    <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </button>
+                <a href="/pendaftaran" class="w-max">
+                    <button
+                        class="bg-customBlue text-white px-5 py-2 rounded-lg flex items-center gap-2 transition transform hover:scale-105 hover:bg-customOrange hover:shadow-lg text-sm sm:text-base">
+                        <span>Daftar Sekarang</span>
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </a>
             </div>
 
             <!-- Grid Compact untuk Kartu Prestasi -->
@@ -163,12 +163,12 @@
                 <!-- Grid container dengan data dari database -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="prestasi-grid">
                     @foreach ($prestasis as $prestasi)
-                        <div class="bg-white shadow-md rounded-lg p-4">
-                            <img src="{{ !is_null($prestasi->gambar) ? $assetBase . '/storage/' . $prestasi->gambar : 'https://placehold.co/600x400' }}"
-                                class="w-full h-64 object-cover rounded-lg mb-4" alt="{{ $prestasi->nama }}">
-                            <p class="font-semibold">{{ $prestasi->nama }}</p>
-                            <p class="text-gray-500 text-sm">{{ $prestasi->subjudul }}</p>
-                        </div>
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <img src="{{ !is_null($prestasi->gambar) ? $assetBase . '/storage/' . $prestasi->gambar : 'https://placehold.co/600x400' }}"
+                            class="w-full h-64 object-cover rounded-lg mb-4" alt="{{ $prestasi->nama }}">
+                        <p class="font-semibold">{{ $prestasi->nama }}</p>
+                        <p class="text-gray-500 text-sm">{{ $prestasi->subjudul }}</p>
+                    </div>
                     @endforeach
                 </div>
 
@@ -181,77 +181,77 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const prestasiContent = document.getElementById('prestasi-content');
-            const loadingIndicator = document.getElementById('loading');
-            const prestasiContainer = document.getElementById('prestasi-container');
+    document.addEventListener('DOMContentLoaded', function() {
+        const prestasiContent = document.getElementById('prestasi-content');
+        const loadingIndicator = document.getElementById('loading');
+        const prestasiContainer = document.getElementById('prestasi-container');
 
-            function loadPage(url) {
-                // Show loading
-                loadingIndicator.classList.remove('hidden');
-                prestasiContent.classList.add('opacity-50');
+        function loadPage(url) {
+            // Show loading
+            loadingIndicator.classList.remove('hidden');
+            prestasiContent.classList.add('opacity-50');
 
-                fetch(url, {
+            fetch(url, {
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'
                     }
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(html => {
-                        // Create temporary container to parse HTML
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = html;
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // Create temporary container to parse HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
 
-                        // Extract hanya bagian prestasi-content dari response
-                        const newPrestasiContent = tempDiv.querySelector('#prestasi-content');
+                    // Extract hanya bagian prestasi-content dari response
+                    const newPrestasiContent = tempDiv.querySelector('#prestasi-content');
 
-                        if (newPrestasiContent) {
-                            // Replace content
-                            prestasiContent.innerHTML = newPrestasiContent.innerHTML;
+                    if (newPrestasiContent) {
+                        // Replace content
+                        prestasiContent.innerHTML = newPrestasiContent.innerHTML;
 
-                            // Update URL tanpa refresh
-                            window.history.pushState({}, '', url);
+                        // Update URL tanpa refresh
+                        window.history.pushState({}, '', url);
 
-                            // Scroll ke bagian prestasi dengan smooth animation
-                            setTimeout(() => {
-                                prestasiContainer.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start'
-                                });
-                            }, 100);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        // Fallback: redirect ke halaman normal
-                        window.location.href = url;
-                    })
-                    .finally(() => {
-                        loadingIndicator.classList.add('hidden');
-                        prestasiContent.classList.remove('opacity-50');
-                    });
+                        // Scroll ke bagian prestasi dengan smooth animation
+                        setTimeout(() => {
+                            prestasiContainer.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }, 100);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback: redirect ke halaman normal
+                    window.location.href = url;
+                })
+                .finally(() => {
+                    loadingIndicator.classList.add('hidden');
+                    prestasiContent.classList.remove('opacity-50');
+                });
+        }
+
+        // Event delegation untuk pagination links
+        document.addEventListener('click', function(e) {
+            const paginationLink = e.target.closest('.pagination a, a[href*="page"]');
+
+            if (paginationLink) {
+                e.preventDefault();
+                const url = paginationLink.href;
+                loadPage(url);
             }
-
-            // Event delegation untuk pagination links
-            document.addEventListener('click', function (e) {
-                const paginationLink = e.target.closest('.pagination a, a[href*="page"]');
-
-                if (paginationLink) {
-                    e.preventDefault();
-                    const url = paginationLink.href;
-                    loadPage(url);
-                }
-            });
-
-            // Handle browser back/forward buttons
-            window.addEventListener('popstate', function () {
-                loadPage(window.location.href);
-            });
         });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function() {
+            loadPage(window.location.href);
+        });
+    });
     </script>
 </x-layout>
