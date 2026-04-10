@@ -17,25 +17,14 @@
     @endif
 
     <!-- Preview Marquee -->
-    <div class="bg-white p-6 rounded-lg shadow mb-6">
+    <div class="bg-white p-6 rounded-lg mb-6">
         <h2 class="text-lg font-semibold mb-4">Preview Marquee</h2>
-        <div class="py-4 overflow-hidden rounded-lg bg-gray-50">
-            <div class="w-[200%] flex animate-scroll-right">
-                <div class="flex space-x-8 md:space-x-12 pr-12">
-                    <!-- First Wave Logos -->
-                    @foreach ($marquees as $marquee)
-                    <img class="h-6 md:h-10 max-w-[100px] object-contain inline-block"
-                        src="{{ asset('storage/' . $marquee->gambar) }}" alt="{{ $marquee->nama }}" loading="lazy">
-                    @endforeach
-
-                    <!-- Duplicated Logos -->
-                    @foreach ($marquees as $marquee)
-                    <img class="h-6 md:h-10 max-w-[100px] object-contain inline-block"
-                        src="{{ asset('storage/' . $marquee->gambar) }}" alt="{{ $marquee->nama }}" loading="lazy">
-                    @endforeach
-                </div>
-            </div>
-        </div>
+            <marquee behavior="" direction="left">
+            @foreach ($marquees as $marquee)
+                <img class="h-6 md:h-10 max-w-[100px] object-contain inline-block scale-110"
+                src="{{ asset('storage/' . $marquee->gambar) }}" alt="{{ $marquee->nama }}" loading="lazy">
+                @endforeach
+            </marquee>
     </div>
 
     <div class="overflow-x-auto bg-white shadow rounded-lg">
