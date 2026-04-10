@@ -129,7 +129,7 @@
     }
     </style>
 
-    <button @click="open = !open" class="fixed bottom-6 right-6 w-[50px] h-[50px] bg-[#E17626] text-white rounded-full
+    <button @click="open = !open" class="fixed bottom-6 right-6 w-[50px] h-[50px] bg-customBlue text-white rounded-full
                flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.3)]
                hover:scale-110 transition-all duration-300 z-50 focus:outline-none">
 
