@@ -1,5 +1,13 @@
 <x-admin-layout>
-    <!-- Quick Stats - Dipindahkan ke atas -->
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Daftar Ekstrakurikuler</h1>
+
+        @if(auth()->user()->canCreate())
+        <a href="{{ route('admin.ekskul.create') }}"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"><i class="fas fa-plus mr-2"></i> Tambah Ekstrakurikuler</a>
+        @endif
+    </div>
+
     <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white p-4 rounded-lg shadow border-l-4 border-purple-500">
             <div class="flex items-center">
@@ -26,15 +34,6 @@
         </div>
     </div>
 
-    <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold text-gray-800">Daftar Ekstrakurikuler</h1>
-
-        @if(auth()->user()->canCreate())
-        <a href="{{ route('admin.ekskul.create') }}"
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"><i class="fas fa-plus mr-2"></i> Tambah Ekstrakurikuler</a>
-        @endif
-    </div>
-
     @if(session('success'))
     <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
         {{ session('success') }}
@@ -55,7 +54,7 @@
                 @forelse($ekskuls as $ekskul)
                 <tr class="border-b hover:bg-gray-50">
                     <td class="p-3">
-                        <img src="{{ $ekskul->image && $ekskul->image !== 'default.svg' ? asset('storage/' . $ekskul->image) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $ekskul->image && $ekskul->image !== 'default.svg' ? asset('storage/' . $ekskul->image) : 'https://placehold.co/50x50' }}"
                             class="h-12 w-12 rounded object-cover" alt="">
                     </td>
                     <td class="p-3 font-semibold">{{ $ekskul->title }}</td>

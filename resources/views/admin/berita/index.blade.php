@@ -60,7 +60,7 @@
                     <td class="p-3 font-semibold">{{ $berita->title }}</td>
                     <td class="p-3">{{ $berita->type }}</td>
                     <td class="p-3">
-                        <img src="{{ $berita->gambar && $berita->gambar !== 'default.svg' ? asset('storage/' . $berita->gambar) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $berita->gambar && $berita->gambar !== 'default.svg' ? asset('storage/' . $berita->gambar) : 'https://placehold.co/50x50' }}"
                             class="h-12 rounded" alt="">
                     </td>
                     <td class="p-3 text-center">

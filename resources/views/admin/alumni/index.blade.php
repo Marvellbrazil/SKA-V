@@ -11,6 +11,20 @@
         @endif
     </div>
 
+    <div class="mb-6 grid grid-cols-1 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-blue-100 rounded-lg">
+                    <i class="fas fa-graduation-cap text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Alumni</p>
+                    <p class="text-xl font-bold">{{ $alumnis->total() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if(session('success'))
     <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
         {{ session('success') }}
@@ -37,7 +51,7 @@
                     <td class="p-3">{{ $alumni->position }}</td>
                     <td class="p-3">{{ $alumni->company }}</td>
                     <td class="p-3">
-                        <img src="{{ $alumni->image && $alumni->image !== 'default.svg' ? asset('storage/' . $alumni->image) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $alumni->image && $alumni->image !== 'default.svg' ? asset('storage/' . $alumni->image) : 'https://placehold.co/50x50' }}"
                             class="h-12 w-12 rounded-full object-cover" alt="">
                     </td>
                     <td class="p-3 text-center">
@@ -92,19 +106,5 @@
 
     <div class="mt-4">
         {{ $alumnis->links() }}
-    </div>
-    <!-- Quick Stats -->
-    <div class="mt-6 grid grid-cols-1 gap-4">
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <i class="fas fa-graduation-cap text-blue-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Alumni</p>
-                    <p class="text-xl font-bold">{{ $alumnis->total() }}</p>
-                </div>
-            </div>
-        </div>
     </div>
 </x-admin-layout>
