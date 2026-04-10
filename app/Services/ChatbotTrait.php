@@ -65,7 +65,7 @@ trait ChatbotTrait
             'Content-Type' => 'application/json',
         ], $headers));
 
-        if (! app()->environment('production')) {
+        if (!app()->environment('production')) {
             $http->withoutVerifying();
         }
 

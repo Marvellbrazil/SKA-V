@@ -83,23 +83,35 @@ Didesain untuk memberikan pengalaman pengguna yang menarik dan mudah dinavigasi,
 🚀 **Instalasi**
 
 ```bash
-# Clone repository  
-git clone https://github.com/NauvalMaulana-Damn/CTRL-V-JHIC.git  
-cd CTRL-V-JHIC
+git clone https://github.com/Marvellbrazil/SKA-V
+cd SKA-V
 
-# Install dependencies  
-composer install
-composer upgrade
-npm install && npm upgrade
+composer install && composer update
+npm install && npm update
 
-# Setup environment  
+# DEVELOPMENT
+cp .env.example .env
+
+# PRODUCTION
+cp .env.prod.example .env
+
 php artisan key:generate --ansi
+php artisan migrate
 
-# Konfigurasi database di file .env  
-php artisan migrate --seed
+# OPTIMATION
+composer dump-autoload -o
 
-# Build frontend  
-npm run build && npm run dev
+# RUN ON PROD
+npm run build
+```
 
-# Jalankan server  
-php artisan serve --host=127.0.0.1 --port=8000
+---
+
+🚂 **Run Locally**
+```bash
+php artisan serve
+```
+
+```bash
+npm run dev
+```

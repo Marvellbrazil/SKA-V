@@ -82,13 +82,12 @@ body {
     display: none !important;
 }
 
-/* Loading animation */
+/* Loading & Fade Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -234,28 +233,6 @@ body {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
@@ -276,79 +253,49 @@ body {
     background: linear-gradient(90deg, #2563eb, #1d4ed8);
 }
 
-/* Chat Bubbles */
 .bubble {
-    max-width: 80%;
+    max-width: 85%;
     padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    font-size: 0.875rem;
-    line-height: 1.5;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    animation: fadeIn 0.2s ease-in;
     word-wrap: break-word;
 }
 
 .bubble.user {
-    background: #3b82f6;
-    color: white;
-    border-bottom-right-radius: 0.25rem;
     align-self: flex-end;
-    margin-left: auto;
+    background-color: #0078ff;
+    color: white;
+    border-bottom-right-radius: 4px;
 }
 
 .bubble.bot {
-    background: #e5e7eb;
-    color: #1f2937;
-    border-bottom-left-radius: 0.25rem;
     align-self: flex-start;
+    background-color: #e5e7eb;
+    color: #111827;
+    border-bottom-left-radius: 4px;
 }
 
-.bubble.bot .typing {
-    display: flex;
-    gap: 4px;
-    padding: 4px;
-}
-
-.bubble.bot .typing span {
-    width: 8px;
-    height: 8px;
-    background: #6b7280;
-    border-radius: 50%;
-    animation: typing 1.4s infinite;
-}
-
-.bubble.bot .typing span:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.bubble.bot .typing span:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-@keyframes typing {
-    0%, 100% {
-        opacity: 0.4;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
-
-/* Jurusan Slider Scrollbar */
+/* Slider & Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar,
 .slider::-webkit-scrollbar {
+    width: 8px;
     height: 6px;
 }
 
+.custom-scrollbar::-webkit-scrollbar-track,
 .slider::-webkit-scrollbar-track {
-    background: #e5e7eb;
-    border-radius: 3px;
+    background: #f1f5f9;
+    border-radius: 4px;
 }
 
+.custom-scrollbar::-webkit-scrollbar-thumb,
 .slider::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg, #3b82f6, #2563eb);
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
 .slider::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(90deg, #2563eb, #1d4ed8);
 }
@@ -417,17 +364,6 @@ body {
     background-color: #e5e7eb;
     color: #111827;
     border-bottom-left-radius: 4px;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(4px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Marquee Animation */
