@@ -10,6 +10,32 @@
         @endif
     </div>
 
+    <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-blue-100 rounded-lg">
+                    <i class="fas fa-users text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Users</p>
+                    <p class="text-xl font-bold">{{ $users->total() }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-green-100 rounded-lg">
+                    <i class="fas fa-user-check text-green-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Active Users</p>
+                    <p class="text-xl font-bold">{{ $users->where('is_active', true)->count() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if(session('success'))
     <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
         {{ session('success') }}
@@ -110,32 +136,5 @@
 
     <div class="mt-4" id="pagination-container">
         {{ $users->links() }}
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <i class="fas fa-users text-blue-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Users</p>
-                    <p class="text-xl font-bold">{{ $users->total() }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-green-100 rounded-lg">
-                    <i class="fas fa-user-check text-green-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Active Users</p>
-                    <p class="text-xl font-bold">{{ $users->where('is_active', true)->count() }}</p>
-                </div>
-            </div>
-        </div>
     </div>
 </x-admin-layout>
