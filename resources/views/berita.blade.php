@@ -117,37 +117,6 @@
         </main>
     </div>
 
-    <style>
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 85% !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sidebar {
-                width: 95% !important;
-            }
-        }
-
-        .sidebar.active {
-            right: 0 !important;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
-
     <script>
         // 1. Script Filter Kategori Berita
         document.addEventListener('DOMContentLoaded', () => {

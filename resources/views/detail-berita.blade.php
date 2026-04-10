@@ -35,7 +35,7 @@
                             <!-- Isi Berita -->
                             <article class="max-w-none">
                                 <div
-                                    class="text-gray-700 leading-relaxed whitespace-pre-line break-words overflow-hidden">
+                                    class="prose text-gray-700 leading-relaxed whitespace-pre-line break-words overflow-hidden">
                                     {!! $berita->content !!}
                                 </div>
                             </article>
@@ -87,87 +87,4 @@
             </div>
         </main>
     </div>
-
-    <style>
-    .max-w-none {
-        max-width: none;
-    }
-
-    .break-words {
-        word-wrap: break-word;
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-
-    .text-gray-700 p {
-        margin-bottom: 1.5rem;
-        line-height: 1.75;
-    }
-
-    .text-gray-700 img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 0.5rem;
-        margin: 2rem 0;
-    }
-
-    .text-gray-700 h2 {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin: 2rem 0 1rem;
-        color: #1e40af;
-    }
-
-    .text-gray-700 h3 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin: 1.5rem 0 1rem;
-        color: #1e40af;
-    }
-
-    .text-gray-700 ul,
-    .text-gray-700 ol {
-        margin-bottom: 1.5rem;
-        padding-left: 1.5rem;
-    }
-
-    .text-gray-700 table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 2rem 0;
-    }
-
-    .text-gray-700 table,
-    .text-gray-700 th,
-    .text-gray-700 td {
-        border: 1px solid #e5e7eb;
-        padding: 0.75rem;
-    }
-
-    .text-gray-700 th {
-        background-color: #f9fafb;
-        font-weight: bold;
-    }
-
-    .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-        .text-gray-700 h2 {
-            font-size: 1.25rem;
-        }
-
-        .text-gray-700 h3 {
-            font-size: 1.1rem;
-        }
-
-        .flex-wrap {
-            flex-wrap: wrap;
-        }
-    }
-    </style>
 </x-layout>

@@ -156,44 +156,6 @@
         </div>
     </footer>
 
-    <style>
-    .line-clamp-3 {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    /* Hover effects */
-    .hover-scale {
-        transition: transform 0.3s ease;
-    }
-
-    .hover-scale:hover {
-        transform: scale(1.05);
-    }
-
-    /* Custom scrollbar untuk table */
-    .overflow-x-auto::-webkit-scrollbar {
-        height: 6px;
-    }
-
-    .overflow-x-auto::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 3px;
-    }
-
-    .overflow-x-auto::-webkit-scrollbar-thumb {
-        background: #c1c1c1;
-        border-radius: 3px;
-    }
-
-    .overflow-x-auto::-webkit-scrollbar-thumb:hover {
-        background: #a8a8a8;
-    }
-    </style>
-
     <!-- Dynamic Vite Assets -->
     @vite(['resources/ts/app.ts', 'resources/css/app.css', 'resources/js/admin-pagination.js'])
 </body>

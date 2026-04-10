@@ -11,7 +11,7 @@ $colorClass = $deptColors[$departement] ?? 'border-gray-500';
 $deptLower = strtolower($departement);
 @endphp
 
-<div class="jur-card w-[380px] shrink-0 rounded-2xl overflow-hidden cursor-pointer group"
+<div class="w-[380px] shrink-0 rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl"
     onclick="handleJurusanClick('{{ $title }}', '{{ $departement }}', `{!! nl2br(e($slot)) !!}`, '{{ $image }}', '{{ $deptLower }}')">
 
     <!-- Image Container with Overlay -->
@@ -71,14 +71,3 @@ function handleJurusanClick(title, dept, desc, image, departemen) {
     openJurusanModal(title, dept, desc, image);
 }
 </script>
-
-<style>
-.jur-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.jur-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-</style>

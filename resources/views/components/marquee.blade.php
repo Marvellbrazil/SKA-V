@@ -11,7 +11,6 @@
         </div>
         @endforeach
 
-        <!-- Duplicate for seamless loop -->
         @foreach ($marquees as $marquee)
         <div class="mx-8 flex-shrink-0">
             <img class="h-6 md:h-10 max-w-[100px] object-contain inline-block scale-110"
@@ -20,20 +19,4 @@
         @endforeach
     </div>
 </div>
-
-<style>
-@keyframes marquee {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(0%);
-    }
-}
-
-.animate-marquee {
-    animation: marquee 90s linear infinite;
-}
-</style>
 @endif

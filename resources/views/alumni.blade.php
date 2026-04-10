@@ -105,28 +105,6 @@
         </section>
     </div>
 
-    <style>
-        .alumni-card {
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-        }
-
-        .alumni-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .alumni-image {
-            transition: all 0.3s ease;
-            border: 4px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .alumni-card:hover .alumni-image {
-            transform: scale(1.05);
-        }
-    </style>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const alumniContent = document.getElementById('alumni-content');

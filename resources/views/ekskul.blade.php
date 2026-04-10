@@ -13,8 +13,8 @@
             </div>
         </section>
 
-        <section class="w-full container py-12 md:py-16 overflow-hidden animate-fade-in" id="ekskul-content">
-            <div class="max-w-full mx-auto">
+        <section class="w-full container py-12 md:py-16 overflow-hidden" id="ekskul-content">
+            <div class="max-w-full mx-auto transition-opacity duration-300" id="ekskul-data">
                 <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Ekstrakurikuler</h2>
 
                 <div id="loading" class="hidden text-center py-8">
@@ -22,7 +22,7 @@
                     <p class="mt-2 text-gray-600">Memuat data...</p>
                 </div>
 
-                <div id="ekskul-data">
+                <div>
                     <div class="max-w-full mx-auto">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             @foreach ($ekskuls as $ekskul)
@@ -71,33 +71,4 @@
         });
     });
     </script>
-
-    <style>
-    #ekskul-content {
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    #ekskul-data {
-        transition: all 0.3s ease-in-out;
-    }
-
-    .text-gray-400,
-    .cursor-not-allowed {
-        pointer-events: none;
-    }
-
-    .animate-spin {
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
-    </style>
 </x-layout>

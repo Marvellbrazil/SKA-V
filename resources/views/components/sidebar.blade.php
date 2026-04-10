@@ -1,52 +1,5 @@
 <div x-data="{ open: false }" class="relative z-[9999]">
 
-    <style>
-    [x-cloak] { display: none !important; }
-
-    /* Pastikan Container QNA menghabiskan seluruh sisa space */
-    #chatContainer {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    /* Area Chat harus serakah (flex-1) */
-    #chatbox {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-        scroll-behavior: smooth;
-        flex: 1; /* Ini yang bikin dia narik semua space kosong */
-        min-height: 0;
-        overflow-y: auto;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        background-color: #f8fafc;
-    }
-
-    /* Hilangkan padding default sidebar agar chatbox bisa nempel (Full Width) */
-    .chat-body-container {
-        padding: 0 !important;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        min-height: 0;
-    }
-
-    /* Custom scrollbar & bubbles tetap kita jaga */
-    #chatbox::-webkit-scrollbar { width: 5px; }
-    #chatbox::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-
-    .bubble { max-width: 85%; padding: 0.75rem 1rem; border-radius: 16px; font-size: 0.95rem; animation: fadeIn 0.2s ease-in; }
-    .bubble.user { align-self: flex-end; background-color: #0078ff; color: white; border-bottom-right-radius: 4px; }
-    .bubble.bot { align-self: flex-start; background-color: #e5e7eb; color: #111827; border-bottom-left-radius: 4px; }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
-
     <button @click="open = !open" class="fixed bottom-6 right-6 w-[55px] h-[55px] bg-blue-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50">
         <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
         <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>

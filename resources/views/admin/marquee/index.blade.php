@@ -160,20 +160,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-    @keyframes scroll-right {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(-50%);
-        }
-    }
-
-    .animate-scroll-right {
-        animation: scroll-right 25s linear infinite;
-    }
-    </style>
 </x-admin-layout>
