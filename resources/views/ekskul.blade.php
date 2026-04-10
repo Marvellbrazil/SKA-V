@@ -49,24 +49,34 @@
 
             if (link && link.getAttribute('href') && link.getAttribute('href').includes('?page=')) {
                 e.preventDefault();
+                const url = link.getAttribute('href');
 
                 document.getElementById('ekskul-data').style.opacity = '0.6';
 
-                fetch(link.href)
-                    .then(response => response.text())
-                    .then(html => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(html, 'text/html');
-                        const newContent = doc.getElementById('ekskul-data');
+                fetch(url, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newContent = doc.getElementById('ekskul-data');
 
-                        if (newContent) {
-                            document.getElementById('ekskul-data').innerHTML = newContent.innerHTML;
-                            window.history.pushState({}, '', link.href);
-                        }
-                    })
-                    .finally(() => {
-                        document.getElementById('ekskul-data').style.opacity = '1';
-                    });
+                    if (newContent) {
+                        document.getElementById('ekskul-data').innerHTML = newContent.innerHTML;
+                        window.history.pushState({}, '', url);
+                        document.getElementById('ekskul-content').scrollIntoView({ behavior: 'smooth' });
+                    }
+                })
+                .catch(err => {
+                    console.error("AJAX Error:", err);
+                    window.location.href = url;
+                })
+                .finally(() => {
+                    document.getElementById('ekskul-data').style.opacity = '1';
+                });
             }
         });
     });
