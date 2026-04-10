@@ -108,7 +108,7 @@
         </table>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4" id="pagination-container">
         {{ $users->links() }}
     </div>
 

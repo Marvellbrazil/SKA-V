@@ -104,7 +104,7 @@
     </div>
 
     <!-- PAGINATION DENGAN SAFE CHECK -->
-    <div class="mt-4">
+    <div class="mt-4" id="pagination-container">
         @if(method_exists($marquees, 'links'))
         {{ $marquees->links() }}
         @endif

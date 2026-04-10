@@ -167,7 +167,7 @@
         </table>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4" id="pagination-container">
         {{ $logs->appends(request()->query())->links() }}
     </div>
 </x-admin-layout>

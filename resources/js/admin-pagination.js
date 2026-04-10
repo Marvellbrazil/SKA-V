@@ -3,15 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const contentContainer = document.getElementById("admin-content");
 
     function setupPagination() {
-        if (paginationContainer) {
-            paginationContainer.replaceWith(
-                paginationContainer.cloneNode(true)
-            );
-            const newPaginationContainer = document.getElementById(
-                "pagination-container"
-            );
+        const container = document.getElementById("pagination-container");
+        if (container) {
+            container.replaceWith(container.cloneNode(true));
+            const newContainer = document.getElementById("pagination-container");
 
-            newPaginationContainer.addEventListener("click", function (e) {
+            newContainer.addEventListener("click", function (e) {
                 const link = e.target.closest("a");
 
                 if (
@@ -35,13 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function loadPage(url) {
         if (!contentContainer) return;
 
+        contentContainer.style.transition = "opacity 0.3s ease";
         contentContainer.style.opacity = "0.5";
         contentContainer.style.pointerEvents = "none";
 
-        const separator = url.includes('?') ? '&' : '?';
-        const ajaxUrl = url + separator + "ajax=1";
-
-        fetch(ajaxUrl, {
+        fetch(url, {
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
                 Accept: "text/html",
@@ -59,17 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const newContent = doc.getElementById("admin-content");
 
                 if (newContent) {
-                    contentContainer.style.opacity = "0";
-                    setTimeout(() => {
-                        contentContainer.innerHTML = newContent.innerHTML;
-                        setupPagination();
-                        
-                        setupPagination();
-                        setTimeout(() => {
-                            contentContainer.style.opacity = "1";
-                            contentContainer.style.pointerEvents = "auto";
-                        }, 50);
-                    }, 300);
+                    contentContainer.innerHTML = newContent.innerHTML;
+                    setupPagination();
+                    contentContainer.style.opacity = "1";
+                    contentContainer.style.pointerEvents = "auto";
+                } else {
+                    window.location.href = url;
                 }
 
                 window.history.pushState({}, "", url);
@@ -87,15 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("popstate", function (e) {
         if (e.state) {
             loadPage(window.location.href);
-        }
-    });
-
-    document.addEventListener("click", function (e) {
-        if (
-            e.target.closest("a.text-gray-400") ||
-            e.target.closest("a.cursor-not-allowed")
-        ) {
-            e.preventDefault();
         }
     });
 });

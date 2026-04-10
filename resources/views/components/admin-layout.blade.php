@@ -195,8 +195,7 @@
     </style>
 
     <!-- Dynamic Vite Assets -->
-    @vite(['resources/ts/app.ts', 'resources/css/app.css'])
-    @vite(['resources/js/admin-pagination.js'])
+    @vite(['resources/ts/app.ts', 'resources/css/app.css', 'resources/js/admin-pagination.js'])
 </body>
 
 </html>
