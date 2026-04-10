@@ -9,6 +9,32 @@
         @endif
     </div>
 
+    <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-blue-100 rounded-lg">
+                    <i class="fas fa-graduation-cap text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Jurusan</p>
+                    <p class="text-xl font-bold">{{ $jurusans->total() }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-green-100 rounded-lg">
+                    <i class="fas fa-building text-green-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Departemen</p>
+                    <p class="text-xl font-bold">4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if(session('success'))
         <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
             {{ session('success') }}
@@ -39,7 +65,7 @@
                         </span>
                     </td>
                     <td class="p-3">
-                        <img src="{{ $jurusan->gambar && $jurusan->gambar !== 'default.svg' ? asset('storage/' . $jurusan->gambar) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $jurusan->gambar && $jurusan->gambar !== 'default.svg' ? asset('storage/' . $jurusan->gambar) : 'https://placehold.co/50x50' }}"
                              class="h-12 w-12 rounded object-cover" alt="{{ $jurusan->jurusan }}">
                     </td>
                     <td class="p-3 text-center">
@@ -92,32 +118,5 @@
 
     <div class="mt-4">
         {{ $jurusans->links() }}
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <i class="fas fa-graduation-cap text-blue-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Jurusan</p>
-                    <p class="text-xl font-bold">{{ $jurusans->total() }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-green-100 rounded-lg">
-                    <i class="fas fa-building text-green-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Departemen</p>
-                    <p class="text-xl font-bold">4</p>
-                </div>
-            </div>
-        </div>
     </div>
 </x-admin-layout>

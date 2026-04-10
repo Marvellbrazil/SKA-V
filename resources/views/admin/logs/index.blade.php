@@ -1,14 +1,54 @@
 <x-admin-layout>
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Activity Logs</h1>
-        <div class="flex space-x-4">
-            <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded">
-                <div class="text-sm">Total Logs</div>
-                <div class="text-xl font-bold">{{ $stats['total'] }}</div>
+    </div>
+
+    <div class="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-blue-100 rounded-lg">
+                    <i class="fas fa-history text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Logs</p>
+                    <p class="text-xl font-bold">{{ $stats['total'] }}</p>
+                </div>
             </div>
-            <div class="bg-green-100 text-green-800 px-4 py-2 rounded">
-                <div class="text-sm">Today</div>
-                <div class="text-xl font-bold">{{ $stats['today'] }}</div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-green-100 rounded-lg">
+                    <i class="fas fa-calendar-day text-green-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Today</p>
+                    <p class="text-xl font-bold">{{ $stats['today'] }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-purple-100 rounded-lg">
+                    <i class="fas fa-user-clock text-purple-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Active Users</p>
+                    <p class="text-xl font-bold">{{ $stats['active_users'] ?? 0 }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-orange-100 rounded-lg">
+                    <i class="fas fa-filter text-orange-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Filtered</p>
+                    <p class="text-xl font-bold">{{ $logs->count() }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -129,56 +169,5 @@
 
     <div class="mt-4">
         {{ $logs->appends(request()->query())->links() }}
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <i class="fas fa-history text-blue-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Logs</p>
-                    <p class="text-xl font-bold">{{ $stats['total'] }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-green-100 rounded-lg">
-                    <i class="fas fa-calendar-day text-green-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Today</p>
-                    <p class="text-xl font-bold">{{ $stats['today'] }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-purple-100 rounded-lg">
-                    <i class="fas fa-user-clock text-purple-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Active Users</p>
-                    <p class="text-xl font-bold">{{ $stats['active_users'] ?? 0 }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-orange-100 rounded-lg">
-                    <i class="fas fa-filter text-orange-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Filtered</p>
-                    <p class="text-xl font-bold">{{ $logs->count() }}</p>
-                </div>
-            </div>
-        </div>
     </div>
 </x-admin-layout>

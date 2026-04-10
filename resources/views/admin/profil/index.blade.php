@@ -22,7 +22,7 @@
             <h2 class="text-lg font-semibold mb-4 text-gray-700">Hero Section</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <img src="{{ $profil->heroImage && $profil->heroImage !== 'default.svg' ? asset('storage/' . $profil->heroImage) : $assetBase . '/images/default.svg' }}"
+                    <img src="{{ $profil->heroImage && $profil->heroImage !== 'default.svg' ? asset('storage/' . $profil->heroImage) : 'https://placehold.co/50x50' }}"
                         class="w-full h-48 object-cover rounded" alt="Hero Image">
                 </div>
                 <div>
@@ -41,11 +41,11 @@
                     <p class="text-gray-600">{{ $profil->profilDesc }}</p>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                    <img src="{{ $profil->profilImage1 && $profil->profilImage1 !== 'default.svg' ? asset('storage/' . $profil->profilImage1) : $assetBase . '/images/default.svg' }}"
+                    <img src="{{ $profil->profilImage1 && $profil->profilImage1 !== 'default.svg' ? asset('storage/' . $profil->profilImage1) : 'https://placehold.co/50x50' }}"
                         class="w-full h-20 object-cover rounded" alt="Profil Image 1">
-                    <img src="{{ $profil->profilImage2 && $profil->profilImage2 !== 'default.svg' ? asset('storage/' . $profil->profilImage2) : $assetBase . '/images/default.svg' }}"
+                    <img src="{{ $profil->profilImage2 && $profil->profilImage2 !== 'default.svg' ? asset('storage/' . $profil->profilImage2) : 'https://placehold.co/50x50' }}"
                         class="w-full h-20 object-cover rounded" alt="Profil Image 2">
-                    <img src="{{ $profil->profilImage3 && $profil->profilImage3 !== 'default.svg' ? asset('storage/' . $profil->profilImage3) : $assetBase . '/images/default.svg' }}"
+                    <img src="{{ $profil->profilImage3 && $profil->profilImage3 !== 'default.svg' ? asset('storage/' . $profil->profilImage3) : 'https://placehold.co/50x50' }}"
                         class="w-full h-20 object-cover rounded" alt="Profil Image 3">
                 </div>
             </div>
@@ -56,7 +56,7 @@
             <h2 class="text-lg font-semibold mb-4 text-gray-700">Visi Section</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <img src="{{ $profil->visiImage && $profil->visiImage !== 'default.svg' ? asset('storage/' . $profil->visiImage) : $assetBase . '/images/default.svg' }}"
+                    <img src="{{ $profil->visiImage && $profil->visiImage !== 'default.svg' ? asset('storage/' . $profil->visiImage) : 'https://placehold.co/50x50' }}"
                         class="w-full h-48 object-cover rounded" alt="Visi Image">
                     <p class="text-sm text-gray-500 mt-2">{{ $profil->visiImageName }}</p>
                 </div>
@@ -73,7 +73,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 @foreach ($profil->misis as $misi)
                 <div class="bg-white border rounded-lg p-4 shadow-sm">
-                    <img src="{{ $misi->misiImage && $misi->misiImage !== 'default.svg' ? asset('storage/' . $misi->misiImage) : $assetBase . '/images/default.svg' }}"
+                    <img src="{{ $misi->misiImage && $misi->misiImage !== 'default.svg' ? asset('storage/' . $misi->misiImage) : 'https://placehold.co/50x50' }}"
                         class="w-full h-32 object-cover rounded mb-3" alt="{{ $misi->misiTitle }}">
                     <h3 class="font-semibold text-gray-800 mb-2">{{ $misi->misiTitle }}</h3>
                     <p class="text-gray-600 text-sm mb-3">{{ $misi->misiDesc }}</p>

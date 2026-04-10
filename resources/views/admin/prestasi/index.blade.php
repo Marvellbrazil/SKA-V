@@ -10,6 +10,20 @@
         @endif
     </div>
 
+    <div class="mb-6 grid grid-cols-1 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <div class="p-2 bg-blue-100 rounded-lg">
+                    <i class="fas fa-trophy text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Prestasi</p>
+                    <p class="text-xl font-bold">{{ $prestasis->total() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if(session('success'))
         <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
             {{ session('success') }}
@@ -34,7 +48,7 @@
                         {{ Str::limit($prestasi->subjudul, 80) }}
                     </td>
                     <td class="p-3">
-                        <img src="{{ $prestasi->gambar && $prestasi->gambar !== 'default.svg' ? asset('storage/' . $prestasi->gambar) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $prestasi->gambar && $prestasi->gambar !== 'default.svg' ? asset('storage/' . $prestasi->gambar) : 'https://placehold.co/50x50' }}"
                              class="h-12 w-12 rounded object-cover" alt="">
                     </td>
                     <td class="p-3 text-center">
@@ -89,20 +103,5 @@
 
     <div class="mt-4">
         {{ $prestasis->links() }}
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="mt-6 grid grid-cols-1 gap-4">
-        <div class="bg-white p-4 rounded-lg shadow">
-            <div class="flex items-center">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <i class="fas fa-trophy text-blue-600"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Prestasi</p>
-                    <p class="text-xl font-bold">{{ $prestasis->total() }}</p>
-                </div>
-            </div>
-        </div>
     </div>
 </x-admin-layout>
