@@ -90,31 +90,23 @@ export class JurusanChartManager {
 
             const result = await response.json();
             if (result.success) {
-                // 🔴 FIX: Convert string ke number
                 this.stats = {
                     elektro: Number(result.data.elektro) || 0,
                     otomotif: Number(result.data.otomotif) || 0,
                     pemesinan: Number(result.data.pemesinan) || 0,
                     tik: Number(result.data.tik) || 0,
                 };
-
-                // Sync dengan localStorage
                 this.saveStatsToLocalStorage();
             }
         } catch (error) {
-            // console.error("❌ Failed to load stats from server:", error);
-            // Fallback ke localStorage
             this.loadStatsFromLocalStorage();
         }
     }
-
-    // Load statistik dari localStorage
     private loadStatsFromLocalStorage(): void {
         const savedStats = localStorage.getItem("jurusanClickStats");
         if (savedStats) {
             try {
                 const localStats = JSON.parse(savedStats);
-                // 🔴 FIX: Convert semua values ke number
                 this.stats = {
                     elektro: Number(localStats.elektro) || 0,
                     otomotif: Number(localStats.otomotif) || 0,
@@ -122,22 +114,19 @@ export class JurusanChartManager {
                     tik: Number(localStats.tik) || 0,
                 };
             } catch (error) {
-                // console.error("Error loading stats from localStorage:", error);
+                // Silent fail
             }
         }
     }
 
-    // Save statistik ke localStorage
     private saveStatsToLocalStorage(): void {
         localStorage.setItem("jurusanClickStats", JSON.stringify(this.stats));
     }
 
-    // 🔴 FIX: Method untuk increment yang proper
     private incrementStat(
         sectionId: keyof DepartmentStats,
         type: "click" | "view" = "click"
     ): void {
-        // Pastikan value adalah number sebelum di-increment
         const currentValue = Number(this.stats[sectionId]) || 0;
         this.stats[sectionId] = currentValue + 1;
 
@@ -204,7 +193,6 @@ export class JurusanChartManager {
                                         (a: number, b: number) => a + b,
                                         0
                                     );
-                                // 🔴 FIX: Percentage calculation di tooltip
                                 const percentage =
                                     total > 0 ? (value / total) * 100 : 0;
                                 const percentageText =
@@ -230,7 +218,6 @@ export class JurusanChartManager {
                                     (a: number, b: number) => a + b,
                                     0
                                 );
-                            // 🔴 FIX: Percentage calculation di chart
                             const percentage =
                                 total > 0 ? (value / total) * 100 : 0;
                             const percentageText =
@@ -277,7 +264,6 @@ export class JurusanChartManager {
             return nameMap[key] || key.toUpperCase();
         });
 
-        // 🔴 FIX: Pastikan data adalah number
         const data = Object.values(this.stats).map((val) => Number(val) || 0);
         const total = data.reduce((sum, value) => sum + value, 0);
 
@@ -307,7 +293,6 @@ export class JurusanChartManager {
 
         labels.forEach((label, i) => {
             const value = data[i];
-            // 🔴 FIX: Percentage calculation yang benar
             const percentage = total > 0 ? (value / total) * 100 : 0;
             const percentageText =
                 percentage > 0 ? percentage.toFixed(1) : "0.0";
@@ -351,7 +336,7 @@ export class JurusanChartManager {
                 ) as keyof DepartmentStats;
 
                 if (targetId && this.stats.hasOwnProperty(targetId)) {
-                    this.incrementStat(targetId, "click"); // 🔴 Pakai method baru
+                    this.incrementStat(targetId, "click");
                     this.scrollToSection(targetId);
                 }
             });
@@ -557,16 +542,10 @@ export class JurusanChartManager {
                 this.sectionViewTime[sectionId] = elapsed;
 
                 if (Math.round(elapsed / 1000) % 2 === 0 && elapsed < 8000) {
-                    // console.log(
-                    //     `⏰ ${sectionId}: ${Math.round(elapsed / 1000)}s`
-                    // );
+                    // Silent log
                 }
 
                 if (elapsed >= 8000) {
-                    // View tracking DINONAKTIFKAN - hanya click yang dihitung
-                    // this.incrementStat(sectionId, "view");
-                    // this.showAutoIncrementNotification(sectionId);
-
                     this.stopViewTimeTracking(sectionId);
                     this.lastVisibleTime[sectionId] = 0;
                     this.sectionViewTime[sectionId] = 0;
@@ -627,8 +606,6 @@ export class JurusanChartManager {
                 top: scrollPosition,
                 behavior: "smooth",
             });
-        } else {
-            // console.warn(`❌ Section ${sectionId} not found for scrolling`);
         }
     }
 
@@ -662,19 +639,16 @@ export class JurusanChartManager {
 
             const result = await response.json();
         } catch (error) {
-            // console.error("❌ Gagal mengirim statistik:", error);
             this.queueFailedRequest(departemen, type);
         }
     }
 
     private getCsrfToken(): string {
-        // Coba beberapa cara untuk mendapatkan CSRF token
         const metaTag = document.querySelector('meta[name="csrf-token"]');
         if (metaTag) {
             return metaTag.getAttribute("content") || "";
         }
 
-        // Fallback: cari token dari input hidden
         const csrfInput = document.querySelector('input[name="_token"]');
         if (csrfInput) {
             return (csrfInput as HTMLInputElement).value;
@@ -686,7 +660,6 @@ export class JurusanChartManager {
             return csrfHeader.getAttribute("content") || "";
         }
 
-        // console.warn("⚠️ CSRF token tidak ditemukan");
         return "";
     }
 
@@ -708,7 +681,7 @@ export class JurusanChartManager {
                 JSON.stringify(failedRequests)
             );
         } catch (error) {
-            // console.error("Gagal menyimpan failed request:", error);
+            // Silent fail
         }
     }
 
@@ -734,14 +707,14 @@ export class JurusanChartManager {
                 }
             }
 
-            // Simpan ulang yang gagal
+            // Save failed requests
             localStorage.setItem("failedStatsRequests", JSON.stringify(failed));
         } catch (error) {
-            // console.error("Error retrying failed requests:", error);
+            // Silent fail
         }
     }
 
-    // Utility function untuk throttle
+    // Utility function for throttle
     private throttle<T extends (...args: any[]) => any>(
         func: T,
         limit: number
@@ -756,16 +729,8 @@ export class JurusanChartManager {
         }) as T;
     }
 
-    // Update chart dengan data baru
+    // Update chart with new data
     public updateChart(): void {
-        // 🔴 DEBUG: Log current stats
-        // console.log("🔢 Current stats:", this.stats);
-        // console.log("🔢 Stats types:", {
-        //     elektro: typeof this.stats.elektro,
-        //     otomotif: typeof this.stats.otomotif,
-        //     pemesinan: typeof this.stats.pemesinan,
-        //     tik: typeof this.stats.tik,
-        // });
 
         if (!this.chart) {
             this.initializeChart();

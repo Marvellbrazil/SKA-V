@@ -17,30 +17,26 @@ class Visitor extends Model
 
     protected $casts = [
         'visited_at' => 'datetime',
-        'is_active' => 'boolean'
+        'is_active' => 'boolean',
     ];
 
-    // 🔴 METHOD BARU: Hitung pengunjung aktif yang REAL
     public static function getActiveVisitorsCount()
     {
-        // Hanya yang visited_at dalam 5 menit terakhir
         return self::where('visited_at', '>=', now()->subMinutes(1))
-                  ->distinct('visitor_id')
-                  ->count('visitor_id');
+            ->distinct('visitor_id')
+            ->count('visitor_id');
     }
 
-    // 🔴 METHOD BARU: Hitung total unik visitors (bukan total records)
     public static function getTotalUniqueVisitors()
     {
         return self::distinct('visitor_id')->count('visitor_id');
     }
 
-    // 🔴 METHOD BARU: Hitung pengunjung hari ini (unik)
     public static function getTodayVisitorsCount()
     {
         return self::whereDate('visited_at', today())
-                  ->distinct('visitor_id')
-                  ->count('visitor_id');
+            ->distinct('visitor_id')
+            ->count('visitor_id');
     }
 
     // Hapus method markInactiveVisitors() dan cleanupOldVisitors()

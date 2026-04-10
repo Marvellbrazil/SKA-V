@@ -81,30 +81,4 @@ function handleJurusanClick(title, dept, desc, image, departemen) {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
-
-/* Custom Scrollbar yang menarik */
-.slider::-webkit-scrollbar {
-    height: 8px;
-}
-
-.slider::-webkit-scrollbar-track {
-    background: linear-gradient(to right, #e2e8f0, #f1f5f9);
-    border-radius: 4px;
-}
-
-.slider::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.slider::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
-}
-
-.slider {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-gutter: stable;
-}
 </style>

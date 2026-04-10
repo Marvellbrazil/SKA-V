@@ -1,59 +1,24 @@
-<!-- Back to top button -->
-<style>
-    /* Back to top button */
-    .back-to-top {
-        position: fixed;
-        bottom: 30px;
-        left: 30px;
-        background: #E17626;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 1000;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .back-to-top.visible {
-        opacity: 1;
-    }
-</style>
-
-<div id="backToTop" class="back-to-top hover:scale-110 transition-all duration-300">
+<div id="backToTop" class="fixed bottom-[30px] left-[30px] bg-[#E17626] text-white w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer opacity-0 transition-opacity duration-300 z-[1000] shadow-lg hover:scale-110">
     <i class="fas fa-arrow-up text-xl"></i>
 </div>
 
 <script>
-// Back to top button functionality
 function initBackToTop() {
     const backToTopBtn = document.getElementById('backToTop');
-
     if (backToTopBtn) {
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
+                backToTopBtn.classList.add('opacity-100');
+                backToTopBtn.classList.remove('opacity-0');
             } else {
-                backToTopBtn.classList.remove('visible');
+                backToTopBtn.classList.remove('opacity-100');
+                backToTopBtn.classList.add('opacity-0');
             }
         });
-
         backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 }
-
-// Initialize back to top button
-document.addEventListener('DOMContentLoaded', function() {
-    initBackToTop();
-});
+document.addEventListener('DOMContentLoaded', initBackToTop);
 </script>

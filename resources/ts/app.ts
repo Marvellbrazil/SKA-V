@@ -23,7 +23,7 @@ import "swiper/css/effect-fade";
 let newsSwiper: Swiper | null = null;
 let allBeritas: any[] = [];
 
-// ✅ Mobile menu
+// Mobile menu
 const initMobileMenu = (): void => {
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("navMenu");
@@ -36,7 +36,7 @@ const initMobileMenu = (): void => {
     }
 };
 
-// ✅ Initialize News Slider dengan data berita
+// Initialize News Slider with news data
 const initializeNewsSlider = (): void => {
     // console.log("🔄 Initializing news slider...");
 
@@ -85,7 +85,6 @@ const initializeNewsSlider = (): void => {
 
         // console.log("✅ News slider initialized successfully");
     } catch (error) {
-        // console.error("❌ Error initializing news slider:", error);
         createDefaultSlide();
     }
 };
@@ -113,11 +112,10 @@ const createDefaultSlide = (): void => {
     initializeSwiperInstance();
 };
 
-// ✅ Initialize Swiper instance - FIXED
+// Initialize Swiper instance
 const initializeSwiperInstance = (): void => {
     const swiperEl = document.querySelector(".mySwiper");
     if (!swiperEl) {
-        // console.error("❌ Swiper element (.mySwiper) not found");
         return;
     }
 
@@ -151,19 +149,13 @@ const initializeSwiperInstance = (): void => {
                 crossFade: true,
             },
             speed: 1000,
-            on: {
-                init: function () {
-                    // console.log("✅ Swiper initialized successfully");
-                },
-            },
         });
     } catch (error) {
-        // console.error("❌ Error initializing Swiper:", error);
+        // Silent fail
     }
 };
 
 const showNews = (beritaId: string | number): void => {
-    // Cari index berdasarkan ID berita
     const index = allBeritas.findIndex((berita) => berita.id == beritaId);
 
     if (index >= 0 && index < allBeritas.length) {
@@ -171,24 +163,20 @@ const showNews = (beritaId: string | number): void => {
             window.scrollTo({ top: 0, behavior: "smooth" });
             newsSwiper.slideTo(index);
         } catch (error) {
-            // console.error(`❌ Error navigating to slide ${index}:`, error);
+            // Silent fail
         }
-    } else {
-        // console.error(`❌ Invalid ID or not found: ${beritaId}`);
     }
 };
 
-// ✅ Initialize regular Swiper (untuk swiper lainnya jika ada)
+// Initialize regular Swiper
 const initSwiper = (): void => {
     const swiperEl = document.querySelector(".mySwiper");
     if (!swiperEl) return;
 
     if (document.getElementById("x-headnews")) {
-        // console.log("📰 News swiper will be handled by initializeNewsSlider");
         return;
     }
 
-    // Fallback untuk swiper biasa
     try {
         new Swiper(".mySwiper", {
             modules: [Navigation, Pagination, Autoplay],
@@ -209,18 +197,18 @@ const initSwiper = (): void => {
             speed: 1000,
         });
     } catch (error) {
-        // console.error("❌ Error initializing regular Swiper:", error);
+        // Silent fail
     }
 };
 
-// ✅ Inisialisasi Micromodal
+// Initialize Micromodal
 MicroModal.init({
     disableScroll: true,
     awaitOpenAnimation: true,
     awaitCloseAnimation: true,
 });
 
-// ✅ Event listener global untuk semua tombol modal
+// Global event listener for all modal buttons
 document.addEventListener("click", (e) => {
     const trigger = (e.target as HTMLElement).closest(
         "[data-micromodal-trigger]"
@@ -244,7 +232,7 @@ document.addEventListener("click", (e) => {
     MicroModal.show("newsModal");
 });
 
-// ✅ INIT based-on DOMContentLoaded Event Listener
+// INIT on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", (): void => {
     // console.log("🏫 SMK PGRI 3 Malang - Initializing...");
 
