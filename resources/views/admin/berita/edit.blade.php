@@ -46,7 +46,7 @@
         <div>
             <label class="block mb-1">Gambar saat ini</label>
             <div class="mb-2">
-                <img src="{{ $berita->gambar && $berita->gambar !== 'default.svg' ? asset('storage/' . $berita->gambar) : $assetBase . '/images/default.svg' }}"
+                <img src="{{ $berita->gambar && $berita->gambar !== 'default.svg' ? asset('storage/' . $berita->gambar) : 'https://placehold.co/50x50' }}"
                     class="h-24 rounded" alt="">
             </div>
             <input type="file" name="gambar" class="border rounded p-2 w-full" accept="image/*">

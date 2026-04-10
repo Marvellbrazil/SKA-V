@@ -27,7 +27,7 @@
                 <div>
                     <label class="block mb-1 font-medium">Hero Image</label>
                     <div class="mb-2">
-                        <img src="{{ $profil->heroImage && $profil->heroImage !== 'default.svg' ? asset('storage/' . $profil->heroImage) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $profil->heroImage && $profil->heroImage !== 'default.svg' ? asset('storage/' . $profil->heroImage) : 'https://placehold.co/50x50' }}"
                             class="h-32 rounded" alt="Current Hero Image">
                     </div>
                     <input type="file" name="heroImage" class="border rounded p-2 w-full" accept="image/*">
@@ -47,7 +47,7 @@
                 <div>
                     <label class="block mb-1 font-medium">Profil Image 1</label>
                     <div class="mb-2">
-                        <img src="{{ $profil->profilImage1 && $profil->profilImage1 !== 'default.svg' ? asset('storage/' . $profil->profilImage1) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $profil->profilImage1 && $profil->profilImage1 !== 'default.svg' ? asset('storage/' . $profil->profilImage1) : 'https://placehold.co/50x50' }}"
                             class="h-24 rounded" alt="Current Profil Image 1">
                     </div>
                     <input type="file" name="profilImage1" class="border rounded p-2 w-full" accept="image/*">
@@ -55,7 +55,7 @@
                 <div>
                     <label class="block mb-1 font-medium">Profil Image 2</label>
                     <div class="mb-2">
-                        <img src="{{ $profil->profilImage2 && $profil->profilImage2 !== 'default.svg' ? asset('storage/' . $profil->profilImage2) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $profil->profilImage2 && $profil->profilImage2 !== 'default.svg' ? asset('storage/' . $profil->profilImage2) : 'https://placehold.co/50x50' }}"
                             class="h-24 rounded" alt="Current Profil Image 2">
                     </div>
                     <input type="file" name="profilImage2" class="border rounded p-2 w-full" accept="image/*">
@@ -63,7 +63,7 @@
                 <div>
                     <label class="block mb-1 font-medium">Profil Image 3</label>
                     <div class="mb-2">
-                        <img src="{{ $profil->profilImage3 && $profil->profilImage3 !== 'default.svg' ? asset('storage/' . $profil->profilImage3) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $profil->profilImage3 && $profil->profilImage3 !== 'default.svg' ? asset('storage/' . $profil->profilImage3) : 'https://placehold.co/50x50' }}"
                             class="h-24 rounded" alt="Current Profil Image 3">
                     </div>
                     <input type="file" name="profilImage3" class="border rounded p-2 w-full" accept="image/*">
@@ -83,7 +83,7 @@
                 <div>
                     <label class="block mb-1 font-medium">Visi Image</label>
                     <div class="mb-2">
-                        <img src="{{ $profil->visiImage && $profil->visiImage !== 'default.svg' ? asset('storage/' . $profil->visiImage) : $assetBase . '/images/default.svg' }}"
+                        <img src="{{ $profil->visiImage && $profil->visiImage !== 'default.svg' ? asset('storage/' . $profil->visiImage) : 'https://placehold.co/50x50' }}"
                             class="h-32 rounded" alt="Current Visi Image">
                     </div>
                     <input type="file" name="visiImage" class="border rounded p-2 w-full" accept="image/*">
@@ -111,7 +111,7 @@
                     <div class="mb-3">
                         <label class="block mb-1 font-medium">Misi Image {{ $index + 1 }}</label>
                         <div class="mb-2">
-                            <img src="{{ $misi->misiImage && $misi->misiImage !== 'default.svg' ? asset('storage/' . $misi->misiImage) : $assetBase . '/images/default.svg' }}"
+                            <img src="{{ $misi->misiImage && $misi->misiImage !== 'default.svg' ? asset('storage/' . $misi->misiImage) : 'https://placehold.co/50x50' }}"
                                 class="h-24 rounded" alt="Current Misi Image {{ $index + 1 }}">
                         </div>
                         <input type="file" name="misiImage[{{ $index }}]" class="border rounded p-2 w-full"

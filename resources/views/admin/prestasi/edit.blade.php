@@ -31,7 +31,7 @@
         <div>
             <label class="block mb-1">Gambar saat ini</label>
             <div class="mb-2">
-                <img src="{{ $prestasi->gambar && $prestasi->gambar !== 'default.svg' ? asset('storage/' . $prestasi->gambar) : $assetBase . '/images/default.svg' }}"
+                <img src="{{ $prestasi->gambar && $prestasi->gambar !== 'default.svg' ? asset('storage/' . $prestasi->gambar) : 'https://placehold.co/50x50' }}"
                     class="h-24 rounded" alt="">
             </div>
             <input type="file" name="gambar" class="border rounded p-2 w-full" accept="image/*">

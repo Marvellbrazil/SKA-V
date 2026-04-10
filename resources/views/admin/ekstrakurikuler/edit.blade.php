@@ -30,7 +30,7 @@
         <div>
             <label class="block mb-1">Gambar saat ini</label>
             <div class="mb-2">
-                <img src="{{ $ekskul->image && $ekskul->image !== 'default.svg' ? asset('storage/' . $ekskul->image) : $assetBase . '/images/default.svg' }}"
+                <img src="{{ $ekskul->image && $ekskul->image !== 'default.svg' ? asset('storage/' . $ekskul->image) : 'https://placehold.co/50x50' }}"
                     class="h-24 rounded" alt="">
             </div>
             <input type="file" name="image" class="border rounded p-2 w-full" accept="image/*">
