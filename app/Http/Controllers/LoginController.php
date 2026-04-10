@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\ActivityLog;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        if (Auth::check()) {
+            return redirect()->route('admin.dashboard');
+        }
+
         return view('admin.auth.login');
     }
 
@@ -29,7 +32,7 @@ class LoginController extends Controller
 
         if ($user) {
             // Jika user ditemukan tapi tidak aktif
-            if (!$user->is_active) {
+            if (! $user->is_active) {
                 // Log activity tanpa user_id (karena user tidak aktif)
                 ActivityLog::create([
                     'user_id' => null, // Set null untuk user tidak aktif
@@ -86,7 +89,7 @@ class LoginController extends Controller
                 'action' => 'LOGOUT',
                 'model_type' => User::class,
                 'model_id' => Auth::id(),
-                'description' => "User logged out: " . Auth::user()->username,
+                'description' => 'User logged out: '.Auth::user()->username,
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ]);

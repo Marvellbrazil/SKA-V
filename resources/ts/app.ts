@@ -58,12 +58,16 @@ const initializeNewsSlider = (): void => {
 
         // Create slides untuk setiap berita
         allBeritas.forEach((berita: any, index: number) => {
+            const imagePath = berita.gambar 
+                ? `/storage/${berita.gambar}` 
+                : 'https://placehold.co/600x400';
+            
             const slide = document.createElement("div");
             slide.className = "swiper-slide relative w-full h-full";
 
             slide.innerHTML = `
                 <a href="/berita/${berita.id}">
-                    <img src="${berita.image}" alt="${berita.title}"
+                    <img src="${imagePath}" alt="${berita.title}"
                         class="headnews-img w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover"
                         onerror="this.src='https://placehold.co/600x400'"/>
                     <div class="absolute bottom-0 left-0 w-full h-1/2 gradient-overlay"></div>
