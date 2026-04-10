@@ -1,23 +1,26 @@
-<div class="flex flex-col items-center mt-6">
-    <img class="w-8 h-8" src="{{ $assetBase . '/assets/faq.png' }}" alt="FAQ">
-    <h2 class="text-xl font-bold text-dark text-center mt-1">QnA</h2>
-</div>
+<div id="chatContainer" class="flex flex-col h-full">
+    <div class="flex items-center justify-center mb-3">
+        <img class="w-8 h-8" src="{{ $assetBase . '/assets/faq.png' }}" alt="FAQ">
+        <h2 class="text-xl font-bold text-dark text-center ml-2">QnA</h2>
+    </div>
 
-<div id="chatbox" class="h-80 overflow-y-auto border rounded-lg p-3 bg-gray-50 text-sm flex flex-col gap-2 shadow-md">
-</div>
+    <div id="chatbox" class="flex-1 min-h-0 border rounded-lg p-3 bg-gray-50 text-sm flex flex-col gap-2 shadow-md">
+    </div>
 
-<div id="question" class="p-4 text-center max-w-full text-sm border border-gray-300 rounded-md bg-white cursor-pointer"
-    onclick="document.getElementById('message').value = this.textContent; document.getElementById('message').focus();">
-    Apa saja jurusannya?
-</div>
-<form id="chatForm" class="flex max-w-full mt-2 h-24">
-    <textarea id="message" name="message" placeholder="Tulis pertanyaan kamu..." class="flex-grow border w-full rounded-l-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300
-            resize-none overflow-y-auto text-sm" rows="1" required></textarea>
+    <div id="question" class="p-3 text-center text-sm border border-gray-300 rounded-md bg-white cursor-pointer mt-2"
+        onclick="document.getElementById('message').value = this.textContent; document.getElementById('message').focus();">
+        Apa saja jurusannya?
+    </div>
+    
+    <form id="chatForm" class="flex mt-2">
+        <textarea id="message" name="message" placeholder="Tulis pertanyaan..." class="flex-grow border w-full rounded-l-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300
+            resize-none text-sm" rows="1" required></textarea>
 
-    <button id="submitBtn" type="submit" class="bg-blue-500 text-white px-4 rounded-r-lg hover:bg-blue-600 transition">
-        Kirim
-    </button>
-</form>
+        <button id="submitBtn" type="submit" class="bg-blue-500 text-white px-4 rounded-r-lg hover:bg-blue-600 transition">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </form>
+</div>
 
 <script>
 const chatForm = document.getElementById('chatForm');

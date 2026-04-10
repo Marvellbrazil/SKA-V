@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Support\Facades\Auth;
 ?>
 <x-admin-layout>
     <div class="py-6">
@@ -451,28 +450,20 @@ use Illuminate\Support\Facades\Auth;
         });
     }
 
-    // Real-time update setiap 10 detik
-    function startRealTimeUpdates() {
-        // Load pertama kali
+    // Update per menit - old school way
+    function startUpdates() {
         fetchVisitorData();
-
-        // Update setiap 5 detik
-        visitorUpdateInterval = setInterval(fetchVisitorData, 5000);
+        visitorUpdateInterval = setInterval(fetchVisitorData, 60000);
     }
 
-    // Stop updates ketika tab tidak aktif (hemat resources)
+    // Hanya update saat page visibility change (ketika user kembali ke tab)
     document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            clearInterval(visitorUpdateInterval);
-        } else {
-            startRealTimeUpdates();
+        if (!document.hidden) {
+            fetchVisitorData();
         }
     });
 
-    // Mulai real-time updates ketika page load
-    document.addEventListener('DOMContentLoaded', startRealTimeUpdates);
-
-    // Juga update ketika user kembali ke tab ini
-    document.addEventListener('focus', fetchVisitorData);
+    // Juga update saat page pertama kali load
+    document.addEventListener('DOMContentLoaded', startUpdates);
     </script>
 </x-admin-layout>

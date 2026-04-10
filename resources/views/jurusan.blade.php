@@ -1,18 +1,28 @@
 <x-layout title="Jurusan - SMK PGRI 3 Malang">
     <style>
-    /* Custom scrollbar untuk slider */
+    /* Custom scrollbar untuk slider - elegant & simple */
     .slider::-webkit-scrollbar {
-        height: 8px;
+        height: 6px;
     }
 
     .slider::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
+        background: #e5e7eb;
+        border-radius: 3px;
     }
 
     .slider::-webkit-scrollbar-thumb {
-        background: #3b82f6;
-        border-radius: 4px;
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
+        border-radius: 3px;
+    }
+
+    .slider::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    }
+
+    /* Smooth scroll behavior */
+    .slider {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Tambahan untuk slider yang lebih baik */

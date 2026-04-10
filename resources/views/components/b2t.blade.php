@@ -17,7 +17,7 @@
         opacity: 0;
         transition: opacity 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3)   ;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .back-to-top.visible {
@@ -25,7 +25,7 @@
     }
 </style>
 
-<div id="backToTop" class="back-to-top">
+<div id="backToTop" class="back-to-top hover:scale-110 transition-all duration-300">
     <i class="fas fa-arrow-up text-xl"></i>
 </div>
 

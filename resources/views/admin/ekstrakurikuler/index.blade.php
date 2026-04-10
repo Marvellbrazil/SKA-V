@@ -1,4 +1,31 @@
 <x-admin-layout>
+    <!-- Quick Stats - Dipindahkan ke atas -->
+    <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-purple-500">
+            <div class="flex items-center">
+                <div class="p-2 bg-purple-100 rounded-lg">
+                    <i class="fas fa-running text-purple-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Ekstrakurikuler</p>
+                    <p class="text-xl font-bold">{{ $ekskuls->total() }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+            <div class="flex items-center">
+                <div class="p-2 bg-green-100 rounded-lg">
+                    <i class="fas fa-check-circle text-green-600"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Aktif</p>
+                    <p class="text-xl font-bold">{{ $ekskuls->count() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Daftar Ekstrakurikuler</h1>
 

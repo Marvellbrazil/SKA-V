@@ -863,11 +863,8 @@ export async function initChartGabungan(): Promise<void> {
                 },
                 scales: {
                     y: {
-                        beginAtZero: false,
-                        min: 250,
-                        ticks: {
-                            stepSize: 50,
-                        },
+                        beginAtZero: true,
+                        grace: '10%',
                         grid: {
                             color: "rgba(0,0,0,0.05)",
                         },
