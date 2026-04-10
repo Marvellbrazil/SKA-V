@@ -1,9 +1,4 @@
 <div id="chatContainer" class="flex flex-col h-full overflow-hidden">
-    <div class="flex-shrink-0 flex items-center justify-center py-3 border-b border-gray-100 bg-white">
-        <img class="w-6 h-6 md:w-7 md:h-7" src="{{ $assetBase . '/assets/faq.png' }}" alt="FAQ">
-        <h2 class="text-base md:text-lg font-bold text-gray-800 ml-2">QnA</h2>
-    </div>
-
     <div id="chatbox" class="flex-1 min-h-0 w-full p-4 bg-[#f8fafc] overflow-y-auto flex flex-col gap-3">
     </div>
 

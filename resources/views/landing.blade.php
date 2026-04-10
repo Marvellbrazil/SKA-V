@@ -128,8 +128,8 @@
                     @foreach ($beritas->take(4) as $berita)
                     <div class="sidenews-item cursor-pointer transition-colors duration-200 hover:bg-gray-50 p-2 rounded-lg"
                         data-news-id="{{ $berita->id }}" data-news-title="{{ $berita->title }}"
-                        data-news-desc="{{ $berita->deskripsi }}" data-news-image="{{ $berita->gambar }}">
-                        <x-sidenews :title="$berita->title" :image="$berita->gambar" loading="lazy" />
+                        data-news-desc="{{ $berita->deskripsi }}" data-news-image="{{ !is_null($berita->gambar) ? $berita->gambar : 'https://placehold.co/600x400' }}">
+                        <x-sidenews :title="$berita->title" :image="!is_null($berita->gambar) ? $berita->gambar : 'https://placehold.co/600x400'" loading="lazy" />
                     </div>
                     @endforeach
 

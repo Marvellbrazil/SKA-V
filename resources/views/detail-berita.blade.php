@@ -52,7 +52,7 @@
                             <a href="{{ route('berita.show', $item->id) }}">
                                 <div
                                     class="sidenews-item cursor-pointer transition-all duration-300 hover:bg-gray-50 p-2 rounded-lg">
-                                    <x-sidenews title="{{ $item->title }}" image="{{ $item->gambar }}" />
+                                    <x-sidenews title="{{ $item->title }}" image="{{ !is_null($item->gambar) ? $item->gambar : 'https://placehold.co/600x400' }}" />
                                 </div>
                             </a>
                             @endforeach
