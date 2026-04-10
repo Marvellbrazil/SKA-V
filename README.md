@@ -82,6 +82,7 @@ Didesain untuk memberikan pengalaman pengguna yang menarik dan mudah dinavigasi,
 
 🚀 **Instalasi**
 
+<code>Terminal</code>
 ```bash
 git clone https://github.com/Marvellbrazil/SKA-V
 cd SKA-V
@@ -108,10 +109,12 @@ npm run build
 ---
 
 🚂 **Run Locally**
+<code>Terminal 1</code>
 ```bash
 php artisan serve
 ```
 
+<code>Terminal 2</code>
 ```bash
 npm run dev
 ```
