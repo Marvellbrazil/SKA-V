@@ -320,14 +320,6 @@
                             <!-- Legend akan diisi oleh JavaScript -->
                         </div>
                     </div>
-
-                    <div class="mt-6 text-center">
-                        <p class="text-gray-600">Statistik ini menampilkan persentase kunjungan ke setiap departemen</p>
-                        <div class="mt-4 p-3 bg-purple-50 rounded-lg">
-                            <p class="text-sm text-purple-700">📊 <strong>Total Kunjungan:</strong> <span
-                                    id="total-clicks"></span> kali</p>
-                        </div>
-                    </div>
                 </section>
             </div>
 
