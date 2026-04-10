@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -7,9 +8,14 @@ use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $pendaftarans = Pendaftaran::orderBy('tahun', 'desc')->paginate(5);
+
+        if ($request->ajax()) {
+            return view('admin.pendaftaran.index', compact('pendaftarans'))->render();
+        }
+
         return view('admin.pendaftaran.index', compact('pendaftarans'));
     }
 
@@ -21,12 +27,13 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tahun'            => 'required|integer',
+            'tahun' => 'required|integer',
             'jumlah_pendaftar' => 'required|integer',
-            'jumlah_diterima'  => 'required|integer',
+            'jumlah_diterima' => 'required|integer',
         ]);
 
         Pendaftaran::create($request->all());
+
         return redirect()->route('admin.pendaftaran.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
@@ -38,18 +45,20 @@ class PendaftaranController extends Controller
     public function update(Request $request, Pendaftaran $pendaftaran)
     {
         $request->validate([
-            'tahun'            => 'required|integer',
+            'tahun' => 'required|integer',
             'jumlah_pendaftar' => 'required|integer',
-            'jumlah_diterima'  => 'required|integer',
+            'jumlah_diterima' => 'required|integer',
         ]);
 
         $pendaftaran->update($request->all());
+
         return redirect()->route('admin.pendaftaran.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function destroy(Pendaftaran $pendaftaran)
     {
         $pendaftaran->delete();
+
         return redirect()->route('admin.pendaftaran.index')->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -1,18 +1,25 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Berita;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\ActivityLog;
+use App\Models\Berita;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $beritas = Berita::latest()->paginate(6);
+
+        if ($request->ajax()) {
+            return view('admin.berita.index', compact('beritas'))->render();
+        }
+
         return view('admin.berita.index', compact('beritas'));
     }
 
@@ -24,11 +31,11 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'     => 'required|max:100',
+            'title' => 'required|max:100',
             'deskripsi' => 'required|max:175',
-            'content'   => 'required',
-            'type'      => 'required|in:PRESTASI,KEGIATAN,PENGUMUMAN,ACARA',
-            'gambar'    => 'nullable|image|mimes:jpg,jpeg,png,svg,webp',
+            'content' => 'required',
+            'type' => 'required|in:PRESTASI,KEGIATAN,PENGUMUMAN,ACARA',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp',
         ]);
 
         $gambarPath = 'default.svg';
@@ -37,11 +44,11 @@ class BeritaController extends Controller
         }
 
         Berita::create([
-            'title'     => $request->title,
+            'title' => $request->title,
             'deskripsi' => $request->deskripsi,
-            'content'   => $request->content,
-            'type'      => $request->type,
-            'gambar'    => $gambarPath,
+            'content' => $request->content,
+            'type' => $request->type,
+            'gambar' => $gambarPath,
         ]);
 
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan!');
@@ -54,42 +61,43 @@ class BeritaController extends Controller
     }
 
     public function edit($id)
-{
-    $berita = Berita::findOrFail($id);
-    return view('admin.berita.edit', compact('berita'));
-}
+    {
+        $berita = Berita::findOrFail($id);
 
-public function update(Request $request, $id)
-{
-    $berita = Berita::findOrFail($id);
-
-    $request->validate([
-        'title'     => 'required|max:100',
-        'deskripsi' => 'required|max:175',
-        'content'   => 'required',
-        'type'      => 'required|in:PRESTASI,KEGIATAN,PENGUMUMAN,ACARA',
-        'gambar'    => 'nullable|image|mimes:jpg,jpeg,png,svg,webp',
-    ]);
-
-    $gambarPath = $berita->gambar;
-
-    if ($request->hasFile('gambar')) {
-        if ($berita->gambar && $berita->gambar !== 'default.svg') {
-            Storage::disk('public')->delete($berita->gambar);
-        }
-        $gambarPath = $request->file('gambar')->store('berita', 'public');
+        return view('admin.berita.edit', compact('berita'));
     }
 
-    $berita->update([
-        'title'     => $request->title,
-        'deskripsi' => $request->deskripsi,
-        'content'   => $request->content,
-        'type'      => $request->type,
-        'gambar'    => $gambarPath,
-    ]);
+    public function update(Request $request, $id)
+    {
+        $berita = Berita::findOrFail($id);
 
-    return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
-}
+        $request->validate([
+            'title' => 'required|max:100',
+            'deskripsi' => 'required|max:175',
+            'content' => 'required',
+            'type' => 'required|in:PRESTASI,KEGIATAN,PENGUMUMAN,ACARA',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp',
+        ]);
+
+        $gambarPath = $berita->gambar;
+
+        if ($request->hasFile('gambar')) {
+            if ($berita->gambar && $berita->gambar !== 'default.svg') {
+                Storage::disk('public')->delete($berita->gambar);
+            }
+            $gambarPath = $request->file('gambar')->store('berita', 'public');
+        }
+
+        $berita->update([
+            'title' => $request->title,
+            'deskripsi' => $request->deskripsi,
+            'content' => $request->content,
+            'type' => $request->type,
+            'gambar' => $gambarPath,
+        ]);
+
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
+    }
 
     public function destroy($id)
     {
@@ -120,16 +128,17 @@ public function update(Request $request, $id)
             ]);
 
             return redirect()->route('admin.berita.index')
-                           ->with('success', 'Berita berhasil dihapus!');
+                ->with('success', 'Berita berhasil dihapus!');
 
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             return redirect()->route('admin.berita.index')
-                           ->with('error', 'Berita tidak ditemukan!');
+                ->with('error', 'Berita tidak ditemukan!');
 
         } catch (\Exception $e) {
-            ActivityLog::error('Error deleting berita: ' . $e->getMessage());
+            ActivityLog::error('Error deleting berita: '.$e->getMessage());
+
             return redirect()->route('admin.berita.index')
-                           ->with('error', 'Terjadi kesalahan saat menghapus berita!');
+                ->with('error', 'Terjadi kesalahan saat menghapus berita!');
         }
     }
 }

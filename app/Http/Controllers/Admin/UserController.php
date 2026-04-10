@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use App\Models\ActivityLog;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $currentUser = Auth::user();
 
         // Cek permission untuk view users
-        if (!$currentUser->canManageUsers()) {
+        if (! $currentUser->canManageUsers()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -27,6 +27,10 @@ class UserController extends Controller
             $users = User::where('role', 'EDITOR')->latest()->paginate(10);
         }
 
+        if ($request->ajax()) {
+            return view('admin.users.index', compact('users'))->render();
+        }
+
         return view('admin.users.index', compact('users'));
     }
 
@@ -35,7 +39,7 @@ class UserController extends Controller
         $currentUser = Auth::user();
 
         // Cek permission untuk create user
-        if (!$currentUser->canManageUsers()) {
+        if (! $currentUser->canManageUsers()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -47,7 +51,7 @@ class UserController extends Controller
         $currentUser = Auth::user();
 
         // Cek permission untuk create user
-        if (!$currentUser->canManageUsers()) {
+        if (! $currentUser->canManageUsers()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -91,7 +95,7 @@ class UserController extends Controller
         $currentUser = Auth::user();
 
         // Cek permission untuk edit user
-        if (!$currentUser->canManageUsers() || !$this->canModifyUser($currentUser, $user)) {
+        if (! $currentUser->canManageUsers() || ! $this->canModifyUser($currentUser, $user)) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -103,7 +107,7 @@ class UserController extends Controller
         $currentUser = Auth::user();
 
         // Cek permission untuk update user
-        if (!$currentUser->canManageUsers() || !$this->canModifyUser($currentUser, $user)) {
+        if (! $currentUser->canManageUsers() || ! $this->canModifyUser($currentUser, $user)) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -116,7 +120,7 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'username' => 'required|max:50|unique:users,username,' . $user->id,
+            'username' => 'required|max:50|unique:users,username,'.$user->id,
             'password' => 'nullable|min:6|confirmed',
             'role' => $allowedRoles,
             'is_active' => 'boolean',
@@ -158,7 +162,7 @@ class UserController extends Controller
         }
 
         // Cek permission untuk delete user
-        if (!$currentUser->canManageUsers() || !$this->canModifyUser($currentUser, $user)) {
+        if (! $currentUser->canManageUsers() || ! $this->canModifyUser($currentUser, $user)) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -189,12 +193,12 @@ class UserController extends Controller
         }
 
         // Cek permission untuk toggle status user
-        if (!$currentUser->canManageUsers() || !$this->canModifyUser($currentUser, $user)) {
+        if (! $currentUser->canManageUsers() || ! $this->canModifyUser($currentUser, $user)) {
             abort(403, 'Unauthorized action.');
         }
 
         $user->update([
-            'is_active' => !$user->is_active
+            'is_active' => ! $user->is_active,
         ]);
 
         $status = $user->is_active ? 'diaktifkan' : 'dinonaktifkan';
@@ -221,6 +225,7 @@ class UserController extends Controller
         } elseif ($currentUser->isAdmin()) {
             return $targetUser->role === 'EDITOR';
         }
+
         return false;
     }
 }

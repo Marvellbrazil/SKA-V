@@ -1,18 +1,24 @@
 <?php
+
 // app/Http/Controllers/Admin/PrestasiController.php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Prestasi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PrestasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $prestasis = Prestasi::latest()->paginate(6);
+
+        if ($request->ajax()) {
+            return view('admin.prestasi.index', compact('prestasis'))->render();
+        }
+
         return view('admin.prestasi.index', compact('prestasis'));
     }
 

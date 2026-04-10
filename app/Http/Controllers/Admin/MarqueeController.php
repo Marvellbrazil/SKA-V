@@ -1,18 +1,24 @@
 <?php
+
 // app/Http\Controllers\Admin\MarqueeController.php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Marquee;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class MarqueeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $marquees = Marquee::orderBy('urutan')->orderBy('nama')->paginate(10);
+
+        if ($request->ajax()) {
+            return view('admin.marquee.index', compact('marquees'))->render();
+        }
+
         return view('admin.marquee.index', compact('marquees'));
     }
 

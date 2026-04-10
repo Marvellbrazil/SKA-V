@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Alumni;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AlumniController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $alumnis = Alumni::latest()->paginate(6);
+
+        if ($request->ajax()) {
+            return view('admin.alumni.index', compact('alumnis'))->render();
+        }
+
         return view('admin.alumni.index', compact('alumnis'));
     }
 
@@ -54,7 +59,7 @@ class AlumniController extends Controller
             'description' => $request->description,
             'image' => $imagePath,
             'bg_color' => $request->bg_color,
-            'achievements' => !empty($achievements) ? $achievements : null,
+            'achievements' => ! empty($achievements) ? $achievements : null,
         ]);
 
         return redirect()->route('admin.alumni.index')->with('success', 'Alumni berhasil ditambahkan!');
@@ -108,7 +113,7 @@ class AlumniController extends Controller
             'description' => $request->description,
             'image' => $imagePath,
             'bg_color' => $request->bg_color,
-            'achievements' => !empty($achievements) ? $achievements : null,
+            'achievements' => ! empty($achievements) ? $achievements : null,
         ]);
 
         return redirect()->route('admin.alumni.index')->with('success', 'Alumni berhasil diperbarui!');

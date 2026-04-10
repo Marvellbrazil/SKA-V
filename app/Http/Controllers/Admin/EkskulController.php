@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Ekskul;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class EkskulController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $ekskuls = Ekskul::latest()->paginate(9);
+
+        if ($request->ajax()) {
+            return view('admin.ekstrakurikuler.index', compact('ekskuls'))->render();
+        }
+
         return view('admin.ekstrakurikuler.index', compact('ekskuls'));
     }
 

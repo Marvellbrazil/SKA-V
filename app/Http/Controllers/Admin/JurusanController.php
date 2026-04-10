@@ -1,18 +1,24 @@
 <?php
+
 // app/Http/Controllers/Admin/JurusanController.php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Jurusan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class JurusanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $jurusans = Jurusan::latest()->paginate(6);
+
+        if ($request->ajax()) {
+            return view('admin.jurusan.index', compact('jurusans'))->render();
+        }
+
         return view('admin.jurusan.index', compact('jurusans'));
     }
 

@@ -1,20 +1,21 @@
 <?php
+
 // app/Http/Controllers/Admin/ActivityLogController.php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ActivityLog;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ActivityLogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Cek permission untuk view logs
-        if (!Auth::user()->canViewLogs()) {
+        if (! Auth::user()->canViewLogs()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -22,13 +23,17 @@ class ActivityLogController extends Controller
             ->latest()
             ->paginate(20);
 
+        if ($request->ajax()) {
+            return view('admin.logs.index', compact('logs'))->render();
+        }
+
         $stats = [
             'total' => ActivityLog::count(),
             'today' => ActivityLog::whereDate('created_at', today())->count(),
             'active_users' => ActivityLog::whereDate('created_at', today())
                 ->distinct('user_id')
                 ->count('user_id'),
-            'filtered' => $logs->count()
+            'filtered' => $logs->count(),
         ];
 
         return view('admin.logs.index', compact('logs', 'stats'));
@@ -37,7 +42,7 @@ class ActivityLogController extends Controller
     public function filter(Request $request)
     {
         // Cek permission untuk view logs
-        if (!Auth::user()->canViewLogs()) {
+        if (! Auth::user()->canViewLogs()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -66,7 +71,7 @@ class ActivityLogController extends Controller
             'active_users' => ActivityLog::whereDate('created_at', today())
                 ->distinct('user_id')
                 ->count('user_id'),
-            'filtered' => $logs->count()
+            'filtered' => $logs->count(),
         ];
 
         // Pertahankan parameter filter di pagination
@@ -78,18 +83,19 @@ class ActivityLogController extends Controller
     public function show(ActivityLog $log)
     {
         // Cek permission untuk view logs
-        if (!Auth::user()->canViewLogs()) {
+        if (! Auth::user()->canViewLogs()) {
             abort(403, 'Unauthorized action.');
         }
 
         $log->load('user');
+
         return view('admin.logs.show', compact('log'));
     }
 
     public function destroy(ActivityLog $log)
     {
         // Cek permission untuk delete logs (hanya SUPERADMIN)
-        if (!Auth::user()->canDeleteLogs()) {
+        if (! Auth::user()->canDeleteLogs()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -102,7 +108,7 @@ class ActivityLogController extends Controller
     public function clearOldLogs()
     {
         // Cek permission untuk delete logs (hanya SUPERADMIN)
-        if (!Auth::user()->canDeleteLogs()) {
+        if (! Auth::user()->canDeleteLogs()) {
             abort(403, 'Unauthorized action.');
         }
 
