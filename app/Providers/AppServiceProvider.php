@@ -12,6 +12,10 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        if (app()->environment('production') || env('APP_ENV') === 'production') {
+            URL::forceScheme('https');
+        }
+
         View::composer('*', function ($view) {
             $assetBase = config('app.url');
 
@@ -25,10 +29,6 @@ class AppServiceProvider extends ServiceProvider
                                 SymfonyRequest::HEADER_X_FORWARDED_PROTO |
                                 SymfonyRequest::HEADER_X_FORWARDED_PORT
         );
-
-        if (app()->environment('production')) {
-            URL::forceScheme('https');
-        }
 
         View::composer('*', function ($view) {
             try {

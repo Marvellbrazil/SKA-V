@@ -1,7 +1,7 @@
 <x-layout title="Profil - SMK PGRI 3 Malang" :headerTransparent="false">
-    <div class="h-full h-max-content container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-6">
         <!-- Hero SKARIGA -->
-        <section class="relative h-[800px] mt-2 rounded-xl overflow-hidden">
+        <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] mt-2 rounded-xl overflow-hidden">
             <div class="absolute inset-0 w-full h-full transition-transform duration-300 hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-transparent via-black/5 to-black/70"></div>
                 <img src="{{ !is_null($profil->heroImage) ? $assetBase . '/storage/' . $profil->heroImage : 'https://placehold.co/600x400' }}"

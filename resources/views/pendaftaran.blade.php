@@ -1,9 +1,9 @@
 <x-layout title="Pendaftaran - SMK PGRI 3 Malang">
     <div class="bg-[#F8F8F8] text-gray-800">
-        <div class="h-full h-max-content container mx-auto px-4 py-6">
+        <div class="container mx-auto px-4 py-6">
 
             <!-- Hero Section -->
-            <section class="relative h-[480px] md:h-[535px] mt-2 rounded-xl overflow-hidden">
+            <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] mt-2 rounded-xl overflow-hidden">
                 <div class="absolute inset-0">
                     <img src="{{ $assetBase . '/assets/header-pendaftaran.webp' }}" alt="Hero SKARIGA"
                         class="w-full h-full object-cover">

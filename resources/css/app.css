@@ -11,11 +11,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-} */
-
 .gradient-overlay {
     background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, black 100%);
 }
@@ -344,28 +339,6 @@ body {
     border-radius: 10px;
 }
 
-.bubble {
-    max-width: 85%;
-    padding: 0.75rem 1rem;
-    border-radius: 16px;
-    font-size: 0.95rem;
-    animation: fadeIn 0.2s ease-in;
-}
-
-.bubble.user {
-    align-self: flex-end;
-    background-color: #0078ff;
-    color: white;
-    border-bottom-right-radius: 4px;
-}
-
-.bubble.bot {
-    align-self: flex-start;
-    background-color: #e5e7eb;
-    color: #111827;
-    border-bottom-left-radius: 4px;
-}
-
 /* Marquee Animation */
 @keyframes marquee {
     0% {
@@ -561,17 +534,29 @@ body {
     filter: brightness(1.1);
 }
 
+/* Profil Page Styles */
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+.hover-brightness:hover {
+    filter: brightness(1.1);
+}
+
 /* Jurusan Page Styles */
 .qna-top3-container {
     display: flex;
     gap: 2rem;
     margin-top: 2rem;
-}
-
-@media (max-width: 768px) {
-    .qna-top3-container {
-        flex-direction: column;
-    }
 }
 
 .slider-container {
@@ -584,22 +569,9 @@ body {
     margin: 1rem 0;
 }
 
-@media (max-width: 768px) {
-    .chart-container {
-        height: 250px !important;
-    }
-}
-
 .btn-dept {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
-}
-
-@media (max-width: 768px) {
-    .btn-dept {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
-    }
 }
 
 .qna-section,

@@ -1,9 +1,9 @@
 <x-layout title="Jurusan - SMK PGRI 3 Malang">
 
     <div class="bg-[#F8F8F8] text-gray-900 font-sans">
-        <div class="h-full h-max-content container mx-auto px-4 py-6">
+        <div class="container mx-auto px-4 py-6">
             <!-- Hero Section -->
-            <section class="relative h-[535px] mt-2 rounded-xl overflow-hidden">
+            <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] mt-2 rounded-xl overflow-hidden">
                 <div class="absolute inset-0 w-full h-full hover-scale">
                     <img src="{{ $assetBase . '/assets/jurusan.png' }}" alt="Hero SKARIGA"
                         class="w-full h-full object-cover " loading="lazy">
@@ -20,10 +20,10 @@
             </section>
 
             <!-- Q&A dan Top 3 Container -->
-            <div class="qna-top3-container">
+            <div class="flex flex-col lg:flex-row gap-8 mt-8">
                 <!-- Q&A Section (Setengah Lebar) -->
                 <section
-                    class="qna-section bg-gray-100 rounded-xl p-6 shadow-2xl flex flex-col items-center justify-center min-h-auto transition-transform duration-300 hover:scale-105">
+                    class="flex-1 bg-gray-100 rounded-xl p-4 md:p-6 shadow-2xl flex flex-col items-center justify-center min-h-auto transition-transform duration-300 hover:scale-105">
                     <!-- Header -->
                     <div class="bg-gray-200 rounded-xl shadow-lg px-6 py-4 grid grid-cols-3 items-center w-full">
                         <div class="flex space-x-2">
@@ -93,8 +93,8 @@
 
                 <!-- Top 3 Jurusan Section (Setengah Lebar) - DIUBAH -->
                 <section
-                    class="top3-section bg-gray-100 rounded-xl p-6 shadow-2xl min-h-auto transition-transform duration-300 hover:scale-105">
-                    <h2>STATISTIK KUNJUNGAN DEPARTEMEN</h2>
+                    class="flex-1 bg-gray-100 rounded-xl p-4 md:p-6 shadow-2xl min-h-auto transition-transform duration-300 hover:scale-105">
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-center mb-4 md:mb-6">STATISTIK KUNJUNGAN DEPARTEMEN</h2>
 
                     <div class="pie-chart-wrapper">
                         <div class="chart-container">
