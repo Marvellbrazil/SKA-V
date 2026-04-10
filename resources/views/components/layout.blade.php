@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-6 sm:p-8">
+                <div class="p-6 sm:p-8 text-start">
                     <h4 class="text-lg font-semibold text-gray-800 mb-3">Deskripsi Jurusan</h4>
                     <p class="text-gray-600 leading-relaxed" x-text="modalDesc"></p>
                 </div>

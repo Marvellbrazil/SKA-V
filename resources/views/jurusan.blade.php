@@ -101,7 +101,7 @@
                             <canvas id="jurusanPieChart"></canvas>
                         </div>
 
-                        <div class="chart-legend" id="chartLegend">
+                        <div class="chart-legend inline-flex" id="chartLegend">
                             <!-- Legend akan diisi oleh JavaScript -->
                         </div>
                     </div>
