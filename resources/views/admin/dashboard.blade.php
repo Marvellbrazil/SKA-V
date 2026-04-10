@@ -351,7 +351,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
     let chart = null;
-    let visitorUpdateInterval;
 
     async function fetchVisitorData() {
         try {
@@ -450,20 +449,11 @@
         });
     }
 
-    // Update per menit - old school way
-    function startUpdates() {
+    // Load saat pertama kali saja - tidak auto-refresh
+    //Jika mau refresh, user manual refresh halaman
+    document.addEventListener('DOMContentLoaded', function() {
         fetchVisitorData();
-        visitorUpdateInterval = setInterval(fetchVisitorData, 60000);
-    }
-
-    // Hanya update saat page visibility change (ketika user kembali ke tab)
-    document.addEventListener('visibilitychange', function() {
-        if (!document.hidden) {
-            fetchVisitorData();
-        }
     });
 
-    // Juga update saat page pertama kali load
-    document.addEventListener('DOMContentLoaded', startUpdates);
     </script>
 </x-admin-layout>
