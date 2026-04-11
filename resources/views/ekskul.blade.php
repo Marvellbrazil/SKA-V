@@ -1,6 +1,6 @@
 <x-layout title="Ekstrakurikuler - SMK PGRI 3 Malang" :headerTransparent="false">
     <div class="container mx-auto px-4 py-6">
-        <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] rounded-xl overflow-hidden">
+        <section class="relative h-[550px] md:h-[600px] lg:h-[700px] rounded-xl overflow-hidden">
             <div class="absolute inset-0 w-full h-full hover-scale">
                 <img src="{{ $assetBase . '/assets/ekstrahero_11zon.webp' }}" alt="Hero SKARIGA" loading="lazy"
                     class="w-full h-full object-cover ">

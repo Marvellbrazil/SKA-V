@@ -9,7 +9,7 @@
         @endif
     </div>
 
-    <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div class="bg-white p-4 rounded-lg shadow">
             <div class="flex items-center">
                 <div class="p-2 bg-blue-100 rounded-lg">

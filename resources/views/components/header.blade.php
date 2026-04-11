@@ -109,7 +109,7 @@
                                         class="{{ request()->is('alumni') ? 'text-customOrange' : '' }} text-black block px-3 py-2 hover:text-customOrange text-sm whitespace-nowrap">Alumni</a>
                                 </li>
                                 <li><a href="/pendaftaran"
-                                        class="{{ request()->is('pendaftaran') ? 'text-customOrange' : '' }} text-black block px-3 py-2 hover:text-customOrange text-sm whitespace-nowrap">Daftar</a>
+                                        class="{{ request()->is('pendaftaran') ? 'text-customOrange' : '' }} text-black block px-3 py-2 hover:text-customOrange text-sm whitespace-nowrap">Pendaftaran</a>
                                 </li>
                             </ul>
                         </li>

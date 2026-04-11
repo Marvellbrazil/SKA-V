@@ -55,66 +55,66 @@
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="bg-gray-800">
+    <!-- Navigation Menu - Responsive -->
+    <nav class="bg-gray-800 overflow-x-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap gap-2 py-3">
+            <div class="flex flex-nowrap md:flex-wrap gap-1 md:gap-2 py-2 md:py-3">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fa-solid fa-chart-column mr-2"></i>Dashboard
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fa-solid fa-chart-column mr-1 sm:mr-2"></i><span class="hidden sm:inline">Dashboard</span>
                 </a>
 
                 <!-- Menu untuk semua role -->
                 <a href="{{ route('admin.berita.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.berita.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-newspaper mr-2"></i>Berita
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.berita.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-newspaper mr-1 sm:mr-2"></i><span class="hidden sm:inline">Berita</span>
                 </a>
 
                 <a href="{{ route('admin.profil.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.profil.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-school mr-2"></i>Profil
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.profil.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-school mr-1 sm:mr-2"></i><span class="hidden sm:inline">Profil</span>
                 </a>
 
                 <a href="{{ route('admin.jurusan.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.jurusan.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-list mr-2"></i>Jurusan
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.jurusan.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-list mr-1 sm:mr-2"></i><span class="hidden sm:inline">Jurusan</span>
                 </a>
 
                 <a href="{{ route('admin.ekskul.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.ekskul.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-football-ball mr-2"></i>Ekstrakurikuler
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.ekskul.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-football-ball mr-1 sm:mr-2"></i><span class="hidden sm:inline">Ekstrakurikuler</span>
                 </a>
 
                 <a href="{{ route('admin.prestasi.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.prestasi.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-trophy mr-2"></i>Prestasi
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.prestasi.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-trophy mr-1 sm:mr-2"></i><span class="hidden sm:inline">Prestasi</span>
                 </a>
 
                 <a href="{{ route('admin.alumni.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.alumni.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-graduation-cap mr-2"></i>Alumni
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.alumni.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-graduation-cap mr-1 sm:mr-2"></i><span class="hidden sm:inline">Alumni</span>
                 </a>
 
                 <a href="{{ route('admin.pendaftaran.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.pendaftaran.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-graduation-cap mr-2"></i>Pendaftaran
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.pendaftaran.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-user-plus mr-1 sm:mr-2"></i><span class="hidden sm:inline">Pendaftaran</span>
                 </a>
 
                 <a href="{{ route('admin.marquee.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.marquee.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-font-awesome mr-2"></i>Marquee
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.marquee.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-font-awesome mr-1 sm:mr-2"></i><span class="hidden sm:inline">Marquee</span>
                 </a>
 
                 <!-- Hanya SUPERADMIN yang bisa melihat Logs dan User Management -->
                 @if(Auth::user()->canViewLogs())
                 <a href="{{ route('admin.logs.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.logs.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-history mr-2"></i>Activity Logs
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.logs.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-history mr-1 sm:mr-2"></i><span class="hidden sm:inline">Logs</span>
                 </a>
 
                 <a href="{{ route('admin.users.index') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin.users.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-users mr-2"></i>User Management
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap {{ request()->routeIs('admin.users.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-users mr-1 sm:mr-2"></i><span class="hidden sm:inline">Users</span>
                 </a>
                 @endif
             </div>

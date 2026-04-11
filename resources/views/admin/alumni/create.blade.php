@@ -1,8 +1,8 @@
 <x-admin-layout>
-    <h1 class="text-2xl font-bold mb-4">Tambah Alumni</h1>
+    <h1 class="text-xl sm:text-2xl font-bold mb-4">Tambah Alumni</h1>
 
     @if ($errors->any())
-    <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
+    <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
         <ul class="list-disc pl-5">
             @foreach ($errors->all() as $err)
             <li>{{ $err }}</li>
@@ -12,47 +12,47 @@
     @endif
 
     <form action="{{ route('admin.alumni.store') }}" method="POST" enctype="multipart/form-data"
-        class="space-y-4 bg-white p-6 rounded shadow">
+        class="space-y-4 bg-white p-4 sm:p-6 rounded shadow">
         @csrf
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div>
-                <label class="block mb-1">Nama Lengkap</label>
-                <input type="text" name="name" value="{{ old('name') }}" class="w-full border rounded p-2" required
+                <label class="block mb-1 text-sm font-medium">Nama Lengkap</label>
+                <input type="text" name="name" value="{{ old('name') }}" class="w-full border rounded p-2 text-sm" required
                     maxlength="100">
             </div>
 
             <div>
-                <label class="block mb-1">Tahun Kelulusan</label>
-                <input type="text" name="graduation" value="{{ old('graduation') }}" class="w-full border rounded p-2"
+                <label class="block mb-1 text-sm font-medium">Tahun Kelulusan</label>
+                <input type="text" name="graduation" value="{{ old('graduation') }}" class="w-full border rounded p-2 text-sm"
                     required maxlength="50" placeholder="Alumni TP 2016">
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div>
-                <label class="block mb-1">Posisi/Jabatan</label>
-                <input type="text" name="position" value="{{ old('position') }}" class="w-full border rounded p-2"
+                <label class="block mb-1 text-sm font-medium">Posisi/Jabatan</label>
+                <input type="text" name="position" value="{{ old('position') }}" class="w-full border rounded p-2 text-sm"
                     required maxlength="100">
             </div>
 
             <div>
-                <label class="block mb-1">Perusahaan</label>
-                <input type="text" name="company" value="{{ old('company') }}" class="w-full border rounded p-2"
+                <label class="block mb-1 text-sm font-medium">Perusahaan</label>
+                <input type="text" name="company" value="{{ old('company') }}" class="w-full border rounded p-2 text-sm"
                     required maxlength="100">
             </div>
         </div>
 
         <div>
-            <label class="block mb-1">Deskripsi</label>
-            <textarea name="description" rows="3" class="w-full border rounded p-2"
+            <label class="block mb-1 text-sm font-medium">Deskripsi</label>
+            <textarea name="description" rows="3" class="w-full border rounded p-2 text-sm"
                 required>{{ old('description') }}</textarea>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div>
-                <label class="block mb-1">Background Color</label>
-                <select name="bg_color" class="w-full border rounded p-2" required>
+                <label class="block mb-1 text-sm font-medium">Background Color</label>
+                <select name="bg_color" class="w-full border rounded p-2 text-sm" required>
                     <option value="">Pilih Warna Background</option>
                     <option value="from-[#2ECC71] to-[#27AE60]" @selected(old('bg_color')=='from-[#2ECC71] to-[#27AE60]'
                         )>Hijau</option>
@@ -68,24 +68,24 @@
             </div>
 
             <div>
-                <label class="block mb-1">Foto</label>
-                <input type="file" name="image" class="border rounded p-2 w-full" accept="image/*" required>
+                <label class="block mb-1 text-sm font-medium">Foto</label>
+                <input type="file" name="image" class="border rounded p-2 w-full text-sm" accept="image/*" required>
             </div>
         </div>
 
         <div>
-            <label class="block mb-1">Pencapaian (satu per baris)</label>
-            <textarea name="achievements" rows="3" class="w-full border rounded p-2"
+            <label class="block mb-1 text-sm font-medium">Pencapaian (satu per baris)</label>
+            <textarea name="achievements" rows="3" class="w-full border rounded p-2 text-sm"
                 placeholder="Employee of the Year 2020&#10;Peningkatan Produktivitas 35%">{{ old('achievements') }}</textarea>
-            <p class="text-sm text-gray-500 mt-1">Masukkan setiap pencapaian dalam baris terpisah</p>
+            <p class="text-xs sm:text-sm text-gray-500 mt-1">Masukkan setiap pencapaian dalam baris terpisah</p>
         </div>
 
-        <div class="flex space-x-4">
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
                 <i class="fas fa-save mr-2"></i>Simpan
             </button>
             <a href="{{ route('admin.alumni.index') }}"
-                class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
+                class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 text-sm text-center">
                 <i class="fas fa-arrow-left mr-2"></i>Kembali
             </a>
         </div>

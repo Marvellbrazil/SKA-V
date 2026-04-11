@@ -7,15 +7,12 @@
     @props(['title'])
     <title>{{ $title ?? 'SMK PGRI 3 Malang - Success by Discipline' }}</title>
 
-    <!-- Libraries -->
     @vite(['resources/css/app.css', 'resources/ts/app.ts'])
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-    <!-- Dynamic Favicon -->
     <link rel="shortcut icon" href="{{ $assetBase }}/assets/skariga300rbg.png" type="image/x-icon">
 
-    <!-- Manual CSS untuk fallback -->
     @production
     <link rel="stylesheet" href="{{ $assetBase }}/build/assets/app.css">
     @endproduction

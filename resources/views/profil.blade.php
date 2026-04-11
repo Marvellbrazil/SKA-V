@@ -1,7 +1,7 @@
 <x-layout title="Profil - SMK PGRI 3 Malang" :headerTransparent="false">
     <div class="container mx-auto px-4 py-6">
         <!-- Hero SKARIGA -->
-        <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] mt-2 rounded-xl overflow-hidden">
+        <section class="relative h-[550px] md:h-[600px] lg:h-[700px] mt-2 rounded-xl overflow-hidden">
             <div class="absolute inset-0 w-full h-full transition-transform duration-300 hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-transparent via-black/5 to-black/70"></div>
                 <img src="{{ !is_null($profil->heroImage) ? $assetBase . '/storage/' . $profil->heroImage : 'https://placehold.co/600x400' }}"
@@ -9,7 +9,8 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute bottom-8 left-3.5 md:left-10 z-10">
-                <h1 class="text-5xl md:text-7xl font-bold text-white drop-shadow-lg transition-transform duration-300 hover:scale-105 cursor-default">
+                <h1
+                    class="text-5xl md:text-7xl font-bold text-white drop-shadow-lg transition-transform duration-300 hover:scale-105 cursor-default">
                     {{ $profil->heroTitle }}
                 </h1>
             </div>
@@ -75,13 +76,16 @@
 
         <!-- Visi -->
         <section class="w-full mx-auto pt-6 pb-10 mt-12">
-            <div class="bg-orange-500 rounded-2xl shadow-lg overflow-visible relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/50">
+            <div
+                class="bg-orange-500 rounded-2xl shadow-lg overflow-visible relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/50">
                 <div class="grid md:grid-cols-2 items-start relative py-12">
 
                     <div class="relative flex justify-center items-start w-full">
 
-                        <div
-                            class="hidden md:block absolute top-0 left-[40%] transform -translate-x-1/2 -translate-y-[41.2%] w-full max-h-[450px]">
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-full max-h-[450px]
+                            top-[-10%] md:top-16 lg:top-0
+                            md:-translate-y-[30%] lg:-translate-y-[41.2%]">
+
                             <img src="{{ !is_null($profil->visiImage) ? $assetBase . '/storage/' . $profil->visiImage : $assetBase . '/assets/bp.Luqman_kepsek-removebg-preview.png' }}"
                                 alt="Kepala Sekolah SMK PGRI 3 Malang"
                                 style="-webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, black 90%, transparent 100%);"
@@ -124,12 +128,12 @@
         <!-- Misi -->
         <section class="w-full mx-auto pt-6 pb-10">
             <h2 class="text-5xl font-bold text-center mb-12">Misi</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-4 gap-8">
                 @foreach ($profil->misis as $misi)
-                    <x-profilcard bgColor="{{ $misi->misiColor }}" title="{!! $misi->misiTitle !!}"
-                        image="{{ !is_null($misi->misiImage) ? $assetBase . '/storage/' . $misi->misiImage : 'https://placehold.co/50x50' }}">
-                        {{ $misi->misiDesc }}
-                    </x-profilcard>
+                <x-profilcard bgColor="{{ $misi->misiColor }}" title="{!! $misi->misiTitle !!}"
+                    image="{{ !is_null($misi->misiImage) ? $assetBase . '/storage/' . $misi->misiImage : 'https://placehold.co/50x50' }}">
+                    {{ $misi->misiDesc }}
+                </x-profilcard>
                 @endforeach
             </div>
 
@@ -138,7 +142,8 @@
                 <!-- Box 1 -->
                 <div
                     class="flex items-center justify-center gap-3 bg-orange-500 text-white rounded-lg px-6 py-4 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/50">
-                    <img src="{{ $assetBase . '/assets/grad.png' }}" class="w-7 h-7 transition-transform duration-300 hover:scale-105 invert" alt="graduation"
+                    <img src="{{ $assetBase . '/assets/grad.png' }}"
+                        class="w-7 h-7 transition-transform duration-300 hover:scale-105 invert" alt="graduation"
                         loading="lazy">
                     <span class="font-semibold text-lg cursor-default">Lulus Siap Kerja</span>
                 </div>
@@ -146,15 +151,17 @@
                 <!-- Box 2 -->
                 <div
                     class="flex items-center justify-center gap-3 bg-orange-500 text-white rounded-lg px-6 py-4 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/50">
-                    <img src="{{ $assetBase . '/assets/hand shake.png' }}" class="w-7 h-7 transition-transform duration-300 hover:scale-105 invert"
-                        alt="handshake" loading="lazy">
+                    <img src="{{ $assetBase . '/assets/hand shake.png' }}"
+                        class="w-7 h-7 transition-transform duration-300 hover:scale-105 invert" alt="handshake"
+                        loading="lazy">
                     <span class="font-semibold text-lg cursor-default">Kerja Sama Industri</span>
                 </div>
 
                 <!-- Box 3 -->
                 <div
                     class="flex items-center justify-center gap-3 bg-orange-500 text-white rounded-lg px-6 py-4 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/50">
-                    <img src="{{ $assetBase . '/assets/trophy.png' }}" class="w-7 h-7 transition-transform duration-300 hover:scale-105 invert" alt="trophy"
+                    <img src="{{ $assetBase . '/assets/trophy.png' }}"
+                        class="w-7 h-7 transition-transform duration-300 hover:scale-105 invert" alt="trophy"
                         loading="lazy">
                     <span class="font-semibold text-lg cursor-default">Prestasi Tingkat Nasional</span>
                 </div>

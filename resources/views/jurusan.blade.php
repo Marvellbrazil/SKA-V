@@ -3,7 +3,7 @@
     <div class="bg-[#F8F8F8] text-gray-900 font-sans">
         <div class="container mx-auto px-4 py-6">
             <!-- Hero Section -->
-            <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] mt-2 rounded-xl overflow-hidden">
+            <section class="relative h-[550px] md:h-[600px] lg:h-[700px] mt-2 rounded-xl overflow-hidden">
                 <div class="absolute inset-0 w-full h-full hover-scale">
                     <img src="{{ $assetBase . '/assets/jurusan.png' }}" alt="Hero SKARIGA"
                         class="w-full h-full object-cover " loading="lazy">

@@ -3,7 +3,7 @@
         <div class="container mx-auto px-4 py-6">
 
             <!-- Hero Section -->
-            <section class="relative h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5.5rem)] lg:h-[calc(100vh-6.5rem)] mt-2 rounded-xl overflow-hidden">
+            <section class="relative h-[550px] md:h-[600px] lg:h-[700px] mt-2 rounded-xl overflow-hidden">
                 <div class="absolute inset-0">
                     <img src="{{ $assetBase . '/assets/header-pendaftaran.webp' }}" alt="Hero SKARIGA"
                         class="w-full h-full object-cover">
@@ -178,7 +178,7 @@
 
                         <!-- Card 3 -->
                         <div
-                            class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                            class="md:col-span-2 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
                             <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6">
                                 <i class="fas fa-shirt text-white text-2xl"></i>
                             </div>

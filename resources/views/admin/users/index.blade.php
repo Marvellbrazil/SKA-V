@@ -10,15 +10,15 @@
         @endif
     </div>
 
-    <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div class="bg-white p-4 rounded-lg shadow">
             <div class="flex items-center">
                 <div class="p-2 bg-blue-100 rounded-lg">
                     <i class="fas fa-users text-blue-600"></i>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Users</p>
-                    <p class="text-xl font-bold">{{ $users->total() }}</p>
+                    <p class="text-xs sm:text-sm text-gray-500">Total Users</p>
+                    <p class="text-lg sm:text-xl font-bold">{{ $users->total() }}</p>
                 </div>
             </div>
         </div>
@@ -29,8 +29,8 @@
                     <i class="fas fa-user-check text-green-600"></i>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm text-gray-500">Active Users</p>
-                    <p class="text-xl font-bold">{{ $users->where('is_active', true)->count() }}</p>
+                    <p class="text-xs sm:text-sm text-gray-500">Active Users</p>
+                    <p class="text-lg sm:text-xl font-bold">{{ $users->where('is_active', true)->count() }}</p>
                 </div>
             </div>
         </div>
@@ -52,38 +52,38 @@
         <table class="min-w-full border-collapse">
             <thead class="bg-gray-100 text-gray-700">
                 <tr>
-                    <th class="p-3 text-left">Username</th>
-                    <th class="p-3 text-left">Role</th>
-                    <th class="p-3 text-left">Status</th>
-                    <th class="p-3 text-center">Aksi</th>
+                    <th class="p-2 sm:p-3 text-left text-xs sm:text-sm">Username</th>
+                    <th class="p-2 sm:p-3 text-left text-xs sm:text-sm">Role</th>
+                    <th class="p-2 sm:p-3 text-left text-xs sm:text-sm">Status</th>
+                    <th class="p-2 sm:p-3 text-center text-xs sm:text-sm">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($users as $user)
                 <tr class="border-b hover:bg-gray-50">
-                    <td class="p-3 font-semibold">{{ $user->username }}</td>
-                    <td class="p-3">
-                        <span class="px-2 py-1 rounded-full text-xs font-semibold
+                    <td class="p-2 sm:p-3 font-semibold text-xs sm:text-sm">{{ $user->username }}</td>
+                    <td class="p-2 sm:p-3">
+                        <span class="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-semibold
                             @if($user->role == 'ADMIN') bg-blue-100 text-blue-800
                             @elseif($user->role == 'EDITOR') bg-green-100 text-green-800
                             @else bg-gray-100 text-gray-800 @endif">
                             {{ $user->role }}
                         </span>
                     </td>
-                    <td class="p-3">
-                        <span class="px-2 py-1 rounded-full text-xs font-semibold
+                    <td class="p-2 sm:p-3">
+                        <span class="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-semibold
                             @if($user->is_active) bg-green-100 text-green-800
                             @else bg-red-100 text-red-800 @endif">
                             {{ $user->is_active ? 'AKTIF' : 'NONAKTIF' }}
                         </span>
                     </td>
-                    <td class="p-3 text-center">
+                    <td class="p-2 sm:p-3 text-center">
                         @if(auth()->user()->canManageUsers())
-                        <div class="flex justify-center space-x-2">
+                        <div class="flex justify-center space-x-1 sm:space-x-2">
                             @if(auth()->user()->canEdit())
                             <a href="{{ route('admin.users.edit', $user->id) }}"
-                                class="text-blue-600 hover:underline text-sm">
-                                <i class="fas fa-edit mr-1"></i>Edit
+                                class="text-blue-600 hover:underline text-xs sm:text-sm">
+                                <i class="fas fa-edit mr-0.5 sm:mr-1"></i><span class="hidden sm:inline">Edit</span>
                             </a>
                             @endif
 
@@ -95,9 +95,8 @@
                                 @csrf
                                 @method('PATCH')
                                 <button type="submit"
-                                    class="text-{{ $user->is_active ? 'yellow' : 'green' }}-600 hover:underline text-sm">
-                                    <i class="fas fa-{{ $user->is_active ? 'pause' : 'play' }} mr-1"></i>
-                                    {{ $user->is_active ? 'Nonaktifkan' : 'Aktifkan' }}
+                                    class="text-{{ $user->is_active ? 'yellow' : 'green' }}-600 hover:underline text-xs sm:text-sm">
+                                    <i class="fas fa-{{ $user->is_active ? 'pause' : 'play' }} mr-0.5 sm:mr-1"></i><span class="hidden sm:inline">{{ $user->is_active ? 'Nonaktifkan' : 'Aktifkan' }}</span>
                                 </button>
                             </form>
 
@@ -107,21 +106,21 @@
                                 onsubmit="return confirm('Yakin ingin menghapus user ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:underline text-sm">
-                                    <i class="fas fa-trash mr-1"></i>Hapus
+                                <button type="submit" class="text-red-600 hover:underline text-xs sm:text-sm">
+                                    <i class="fas fa-trash mr-0.5 sm:mr-1"></i><span class="hidden sm:inline">Hapus</span>
                                 </button>
                             </form>
                             @endif
                             @endif
                         </div>
                         @else
-                        <span class="text-gray-400 text-sm">No Access</span>
+                        <span class="text-gray-400 text-xs sm:text-sm">No Access</span>
                         @endif
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="4" class="p-4 text-center text-gray-500">
+                    <td colspan="4" class="p-3 sm:p-4 text-center text-gray-500 text-xs sm:text-sm">
                         @if(auth()->user()->isAdmin())
                         Tidak ada user EDITOR yang ditemukan
                         @else
