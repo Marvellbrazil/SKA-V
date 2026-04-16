@@ -25,8 +25,6 @@
                 </div>
             </section>
 
-            <!-- Grafik Section -->
-            <!-- Grafik Section -->
             <section class="max-w-[104rem] mx-auto py-10 px-4 md:px-10">
                 <div class="bg-white rounded-2xl shadow p-8 md:p-10 max-w-7xl mx-auto">
                     <!-- Judul -->
@@ -112,7 +110,6 @@
                     </div>
                 </section>
                 <div class=" md:mr-5 mt-2">
-                    <!-- Bungkus margin kanan di sini -->
                     <img src="{{ $assetBase . '/assets/pend-onl-nobg.png' }}" alt="Hero SKARIGA"
                         class="w-full h-auto object-cover">
                 </div>
@@ -178,7 +175,7 @@
 
                         <!-- Card 3 -->
                         <div
-                            class="sm:col-span-2 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                            class="col-span-1 md:col-span-2 lg:col-span-1 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
                             <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6">
                                 <i class="fas fa-shirt text-white text-2xl"></i>
                             </div>
@@ -195,7 +192,6 @@
                         </div>
                     </div>
 
-                    <!-- Flex container buat 2 card terakhir (biar center) -->
                     <div class="flex justify-center flex-wrap gap-8 mt-8">
                         <!-- Card 4 -->
                         <div
